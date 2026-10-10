@@ -1,0 +1,514 @@
+# StudyQuest — Gamified University Learning Platform
+
+## 1. Project Overview
+
+Design a polished, interactive desktop web application prototype called **StudyQuest** for university students.
+
+StudyQuest helps students prepare for university exams through gamified practice quizzes and an interactive knowledge library based on their university lectures.
+
+The experience should combine the engaging learning mechanics of Duolingo with a cozy university student's virtual bedroom. The main differentiator is that students navigate the platform through objects inside their virtual room rather than using a conventional dashboard full of menus.
+
+Create a visually rich, modern, friendly, and academically appropriate product. It should feel like a real university learning platform, not a children's game.
+
+**Important:** This is a frontend prototype. Focus on visual design, user flows, interactions, and realistic sample data. Do not implement a real backend, authentication server, database, or actual university integration.
+
+## 2. Design Direction and Visual Identity
+
+Use Duolingo-inspired gamification principles without directly copying its interface, logo, mascot, or illustrations.
+
+### Color palette
+
+- Primary accent purple: #7C5CFC
+- Primary purple hover: #6845E8
+- Light purple background: #F3F0FF
+- Main background: #F7F8FC
+- Card background: #FFFFFF
+- Main text: #252538
+- Secondary text: #77778C
+- Success green: #58CC02
+- Reward yellow: #FFC857
+- Error red: #FF5B6E
+
+Purple must be the main brand color throughout the application.
+
+Use white cards, subtle shadows, rounded corners, friendly illustrations, clear typography, and generous spacing. Use approximately 14–20px corner radii for cards and 10–14px for buttons.
+
+Use Inter or a similar modern sans-serif font.
+
+The overall design should be playful, motivating, polished, and suitable for university students.
+
+Use a consistent design system for buttons, cards, progress bars, badges, icons, quiz answers, and navigation elements.
+
+## 3. Application Scope
+
+Create these five primary screens and connect them through working prototype interactions:
+
+1. Login — a sleeping student character in a bedroom.
+2. Virtual Room Dashboard — the main interactive student environment.
+3. Practice — course folders, horizontal learning paths, and quizzes.
+4. Explore — interactive lecture knowledge library.
+5. Leaderboard — rankings based on points earned from completed Practice activities.
+
+Do not add a registration or sign-up page. University administrators create student accounts in advance.
+
+Do not add unnecessary features such as payment pages, social feeds, messaging, or complex account settings.
+
+Target desktop first, using a 1440 × 900px frame. Ensure the layout can adapt to smaller screens where practical.
+
+## 4. Screen 1 — Login: Wake Up the Student
+
+Create an immersive login screen that looks like a cozy university student's bedroom at night.
+
+### Visual composition
+
+Show a beautifully illustrated bedroom with:
+
+- A bed with a blanket and pillow.
+- A student character sleeping peacefully in the bed.
+- A desk with a computer.
+- A bookshelf with several books.
+- A window showing a nighttime sky.
+- A bedside alarm clock.
+- Soft lighting and a comfortable atmosphere.
+
+The bedroom illustration should be the visual centerpiece.
+
+Place a floating login card or a clearly integrated login panel over the bedroom scene. Keep the scene visible and do not let the form overwhelm the illustration.
+
+Display the StudyQuest logo and a short greeting, such as:
+
+"Өглөөний мэнд!"
+
+"Хичээлдээ бэлэн үү?"
+
+Login form:
+- Student ID / Оюутны код
+- Password / Нууц үг
+- Primary button: "Сэрэх"
+
+There must be no sign-up link or registration option.
+
+### Login interaction
+
+When the user enters a student ID and password and clicks "Сэрэх":
+
+1. Show a brief sunrise or warm-light transition through the bedroom window.
+2. Play a subtle alarm animation or show a visual alarm indicator.
+3. Animate the student character waking up.
+4. Transition to the main virtual bedroom dashboard.
+
+For this prototype, use mock authentication and sample student credentials. No real university authentication is required.
+
+The initial character should have one consistent, friendly illustration style. Do not create multiple character skins or complex character customization.
+
+## 5. Screen 2 — Virtual Room Dashboard
+
+This is the most important and distinctive screen in StudyQuest.
+
+After login, the user enters the same bedroom, now in a bright morning environment.
+
+The student character is awake and sitting on the bed or standing beside the desk.
+
+Create a cozy, detailed, interactive 2D illustrated room. Use a slightly angled or front-facing perspective that makes the objects easy to recognize and click.
+
+### Main interactive objects
+
+**A. Bed — Log out**
+
+The bed should be a recognizable interactive object.
+
+When the user clicks the bed:
+- Show a small tooltip: "Амрах / Гарах".
+- Display a confirmation dialog asking whether the user wants to log out.
+- If confirmed, return to the login screen and show the sleeping character again.
+
+**B. Computer on the desk — Practice**
+
+The computer should have a visible monitor and desk setup.
+
+When the user clicks the computer:
+- Show a hover effect or a purple highlight.
+- Display a tooltip: "Practice — Шалгалтад бэлдэх".
+- Navigate to the Practice screen.
+
+**C. Bookshelf — Explore**
+
+The bookshelf should contain colorful, recognizable books.
+
+When the user clicks the bookshelf:
+- Highlight the shelf.
+- Display a tooltip: "Explore — Мэдлэгийн сан".
+- Navigate to the Explore screen.
+
+**D. Leaderboard access**
+
+Provide a small, visually integrated trophy or ranking board somewhere in the room. It can be on the wall or near the desk.
+
+Clicking it opens the Leaderboard screen.
+
+### Room interface
+
+The room should remain the main focus. Do not cover the bedroom with a large conventional dashboard panel.
+
+Place a compact top HUD containing:
+- StudyQuest branding.
+- Current student's display name.
+- Total XP.
+- Current learning streak.
+- A small leaderboard icon.
+
+Display a small daily goal card in a corner, showing the student's daily XP target and progress.
+
+Example:
+"Өнөөдрийн зорилго"
+"40 / 60 XP"
+
+Use the room itself as the main navigation interface.
+
+### Character behavior
+
+For this initial prototype, use one consistent character design and one default awake expression.
+
+The character can have subtle idle animations or small interaction reactions if supported. Do not implement complex character progression, changing outfits, or multiple emotional states.
+
+Keep all interactive objects clearly discoverable through hover states, tooltips, and pointer feedback.
+
+## 6. Screen 3 — Practice
+
+Practice is the exam preparation section. It should feel gamified, structured, and motivating.
+
+Use a white and light-purple interface with #7C5CFC as the primary accent.
+
+Provide a clear way to return to the virtual bedroom.
+
+### Practice home — Course folders
+
+When the student enters Practice, display a course selection screen.
+
+Use a grid of rounded course cards or folder illustrations.
+
+Example course:
+- Веб систем ба технологи
+- Үйлдлийн систем
+- Өгөгдлийн сан
+
+Each course card should contain:
+- Course title.
+- Small illustrative icon.
+- Number of available units.
+- Completion percentage.
+- A compact progress bar.
+- A continue or start button.
+
+Use "Веб систем ба технологи" as the primary demo course and make it the most visually prominent.
+
+### Course learning path
+
+When the student opens a course, show a Duolingo-inspired learning path that moves **horizontally from left to right**, not vertically.
+
+This is an important design requirement.
+
+Organize the learning path into clearly separated Sections and Units.
+
+Example structure:
+
+Course: Веб систем ба технологи
+
+Section 1 — Вебийн үндэс
+- Unit 1: Вебийн архитектур
+- Unit 2: HTTP ба HTTPS
+- Unit 3: Client ба Server
+
+Section 2 — Frontend технологи
+- Unit 1: HTML ба CSS
+- Unit 2: JavaScript
+- Unit 3: React үндэс
+
+Section 3 — Орчин үеийн веб хөгжүүлэлт
+- Unit 1: React Components
+- Unit 2: Props ба State
+- Unit 3: React Hooks
+
+Use connecting paths and rounded circular lesson nodes.
+
+Lesson states:
+- Completed: green checkmark and completed styling.
+- Current: prominent purple node with a subtle glow or emphasis.
+- Available: normal unlocked node.
+- Locked: muted styling and a lock icon.
+
+Allow horizontal scrolling when the learning path is wider than the viewport.
+
+Section labels should clearly separate groups of units. Include section completion indicators.
+
+The learning path should feel like a journey, with clear visual progress from left to right.
+
+### Quiz interface
+
+When a student clicks an available lesson node, open a quiz screen.
+
+Layout:
+- Top-left: back button and current course title.
+- Top area: question number, total questions, XP reward, and progress bar.
+- Main area: question text and answer options.
+- Side area: the StudyQuest student character standing next to the question panel.
+- Bottom area: "Шалгах" button.
+
+The character should provide a friendly learning companion presence without obstructing the question or answer options.
+
+Support these question types:
+1. Multiple-choice questions.
+2. True/false questions.
+3. Predict the output of a short code snippet.
+
+Use realistic sample questions based on the course "Веб систем ба технологи".
+
+### Answer feedback
+
+Before an answer is selected, use neutral styling.
+
+After the student clicks an answer and presses "Шалгах":
+- Correct answer: green highlight, checkmark, and a short explanation.
+- Incorrect answer: red or pink highlight, clearly identify the correct answer, and explain why.
+- Provide a "Дараагийн асуулт" button to continue.
+
+Keep feedback inline within the question interface. Avoid disruptive modal dialogs after every answer.
+
+### Quiz completion
+
+At the end of the quiz, display a results screen with:
+- Total score.
+- Correct answer percentage.
+- XP earned in this attempt.
+- Number of correct answers.
+- Topics that need additional practice.
+- A "Дахин оролдох" button.
+- A "Өрөө рүү буцах" button.
+
+Update the prototype's mock student XP and Practice progress when the quiz is completed.
+
+### Leaderboard integration
+
+Every XP point earned from completed Practice activities must contribute to the student's total XP used for the Leaderboard.
+
+For example, if a student earns 40 XP from a completed quiz, add those 40 XP to their total and reflect the updated ranking in the Leaderboard prototype.
+
+Avoid awarding XP repeatedly just by refreshing the result screen. For the prototype, keep completed quiz attempts and their rewards consistent during the current session.
+
+## 7. Screen 4 — Explore: Interactive Knowledge Library
+
+Explore is a visual learning library where students understand lecture concepts through interactive examples rather than only reading long text.
+
+Use a clean library-inspired interface with a white background, soft purple accents, rounded cards, and meaningful educational illustrations.
+
+Provide a back button to return to the virtual bedroom.
+
+### Explore home — Course cards
+
+Display the available courses in a responsive grid of cards.
+
+Each card should include:
+- Course title.
+- A distinct subject illustration or icon.
+- Short description.
+- Number of learning topics.
+- Progress percentage.
+- Progress bar.
+- "Үргэлжлүүлэх" button.
+
+Example courses:
+- Веб систем ба технологи
+- Үйлдлийн систем
+- Өгөгдлийн сан
+
+Use the first course as the primary demonstration.
+
+The Explore course progress should be separate from the Practice quiz score, while both sections can link to the same underlying lecture topics.
+
+### Interactive lecture detail
+
+When the student opens a course card, display a topic library with categorized lecture topics.
+
+Example topics for "Веб систем ба технологи":
+- Client–Server architecture.
+- HTTP request and response.
+- HTML document structure.
+- JavaScript event handling.
+- React components.
+- Props and State.
+- useState and rendering.
+
+Use topic cards with completion states and progress indicators.
+
+When the student opens a topic, show an interactive lecture page with the following layout:
+
+**Left sidebar:**
+- Course title.
+- Topic navigation.
+- Completed topic indicators.
+- Current topic highlight.
+
+**Main content:**
+- Topic title.
+- A short, clear explanation in Mongolian.
+- An interactive diagram or visual example.
+- Step-by-step explanation.
+- A code example when relevant.
+- An interactive demonstration area.
+- A short knowledge check at the end.
+
+### Example interactive topic: React Components
+
+Create a visual example showing an App component containing Header and Content components.
+
+Display the component hierarchy using connected cards or a diagram.
+
+Provide an interactive control such as:
+"Render хийх"
+
+When clicked, reveal the rendering steps one at a time.
+
+Show how the parent component renders its child components.
+
+Display a short React code snippet beside or below the diagram, with syntax highlighting.
+
+The student should be able to interact with the example and see a meaningful visual response.
+
+Other topics should use appropriate visualizations, such as:
+- Client–Server communication arrows.
+- HTTP request and response flows.
+- HTML element hierarchy.
+- JavaScript event handling.
+- React state changes.
+
+Do not use the same generic static illustration for every topic.
+
+### Knowledge checks
+
+At the end of each interactive topic, include two or three short questions.
+
+After completion:
+- Mark the topic as completed.
+- Update the Explore progress.
+- Show a clear next-topic action.
+- Provide a link to related Practice questions when appropriate.
+
+Use mock lecture content for the initial prototype. Structure the interface so real lecture materials can be added later.
+
+## 8. Screen 5 — Leaderboard
+
+Create a dedicated Leaderboard screen accessible from the bedroom trophy/ranking board and the compact top HUD.
+
+The leaderboard ranks students by total XP earned through Practice activities.
+
+Use the primary purple brand color, white cards, subtle shadows, and clear ranking hierarchy.
+
+### Layout
+
+At the top:
+- Title: "Leaderboard"
+- Subtitle: "Най их оноо цуглуулсан оюутнууд"
+- A period selector: "Энэ долоо хоног" and "Нийт"
+
+Below the heading, show the top three students in a podium-style layout.
+
+Display:
+- Rank.
+- Student avatar or simple character illustration.
+- Student display name.
+- Total XP.
+
+Below the podium, display a ranked list of other students with:
+- Rank number.
+- Avatar.
+- Student display name.
+- Total XP.
+- Rank change indicator, if sample data is available.
+
+Highlight the current student with a purple-tinted background and a clear "Чи" label.
+
+Use realistic Mongolian student names and mock data.
+
+Example:
+1. Бат-Эрдэнэ — 1,240 XP
+2. Номин — 1,120 XP
+3. Тэмүүлэн — 980 XP
+4. Саруул — 850 XP
+
+Use consistent XP values throughout the prototype. Do not display contradictory rankings or point totals.
+
+The Leaderboard must use XP earned from completed Practice activities. Do not award separate XP merely for opening Explore topics.
+
+For this prototype, use local mock state to simulate leaderboard updates when Practice quizzes are completed.
+
+## 9. Navigation and Interaction Requirements
+
+Implement the following connected user journey:
+
+Login → Virtual Room → Practice → Course Folders → Horizontal Learning Path → Quiz → Results → Updated Leaderboard.
+
+Also support:
+
+Virtual Room → Explore → Course Library → Interactive Topic → Knowledge Check → Updated Explore Progress.
+
+And:
+
+Virtual Room → Trophy → Leaderboard → Return to Virtual Room.
+
+The bed must provide a logout interaction that returns the user to the sleeping login screen after confirmation.
+
+The computer must open Practice.
+
+The bookshelf must open Explore.
+
+The trophy or ranking board must open Leaderboard.
+
+Add hover effects, pressed states, tooltips, and subtle transitions where appropriate.
+
+All primary buttons and navigation elements should perform their intended actions in the prototype.
+
+Do not create decorative controls that appear clickable but do nothing.
+
+Use realistic sample data to demonstrate the experience.
+
+Keep navigation consistent and provide clear ways to return to the previous screen or bedroom.
+
+## 10. Technical and Prototype Guidelines
+
+If generating a React-based prototype, use React components with reusable UI elements and clean, maintainable structure.
+
+Use mock data and local state to simulate:
+- Student login.
+- Character wake-up transition.
+- Bedroom object interactions.
+- Quiz answers and explanations.
+- XP rewards.
+- Practice progress.
+- Explore topic completion.
+- Leaderboard rankings.
+- Logout confirmation.
+
+Do not require a backend, external database, real authentication service, or external API.
+
+Use CSS transitions or lightweight animations where appropriate. Prioritize usability and performance over elaborate animations.
+
+Ensure buttons, answer selections, progress indicators, and navigation work in the generated prototype.
+
+Use consistent mock student information, course names, XP totals, and progress values across all screens.
+
+## 11. Final Quality Requirements
+
+The final prototype should feel like a coherent, production-quality educational product rather than a collection of disconnected mockup screens.
+
+Prioritize these design qualities:
+
+1. The virtual bedroom must be visually distinctive and immediately understandable.
+2. Practice must feel like a structured, gamified exam preparation system.
+3. The horizontal learning path must move clearly from left to right.
+4. Explore must make complex lecture concepts easier to understand through meaningful interactive visuals.
+5. The character should create a consistent and friendly identity throughout the application.
+6. The purple accent color #7C5CFC must establish a recognizable visual identity.
+7. XP, progress, and leaderboard ranking must remain logically connected.
+8. The interface should be readable, accessible, and appropriate for university students.
+
+**Start by generating the complete connected desktop prototype with all five screens, then refine the visual hierarchy, interactions, and consistency. Do not stop after generating only the login page or a static dashboard.**
