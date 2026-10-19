@@ -1,48 +1,64 @@
 {
   "projectName": "StudyQuest",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "roles": ["STUDENT", "TEACHER"],
   "teamMembers": [
     {
       "taskId": "TASK-01",
       "name": "А. Төгөлдөр",
       "role": "Frontend / Auth & Dashboard",
       "routes": ["/login", "/dashboard"],
-      "apiEndpoints": ["POST /api/auth/login", "GET /api/user/profile"]
+      "apiEndpoints": ["POST /api/auth/login", "GET /api/user/profile"],
+      "tests": ["frontend/src/tests/Login.test.jsx"]
     },
     {
       "taskId": "TASK-02",
       "name": "Мөнхбаяр",
-      "role": "Frontend / Practice & Quiz",
-      "routes": ["/practice", "/quiz/:unitId"],
-      "apiEndpoints": ["GET /api/courses/practice", "GET /api/quiz/:unitId"]
+      "role": "Frontend & Backend / Practice & Question CRUD",
+      "routes": ["/practice", "/quiz/:unitId", "/admin/questions"],
+      "apiEndpoints": [
+        "GET /api/courses/practice",
+        "GET /api/quiz/:unitId",
+        "POST /api/admin/questions",
+        "PUT /api/admin/questions/:id"
+      ],
+      "tests": ["backend/tests/questions_crud.test.js"]
     },
     {
       "taskId": "TASK-03",
       "name": "Тэмүүлэн (Temka)",
-      "role": "Frontend / Learning Path",
-      "routes": ["/practice/:courseId/path", "/topics"],
-      "apiEndpoints": ["GET /api/units/path/:courseId"]
+      "role": "Frontend / Horizontal Learning Path",
+      "routes": ["/practice/:courseId", "/topics"],
+      "apiEndpoints": ["GET /api/units/path/:courseId", "GET /api/topics/:unitId"],
+      "tests": ["frontend/src/tests/HorizontalPath.test.jsx"]
     },
     {
       "taskId": "TASK-04",
       "name": "Д. Баттөмөр",
-      "role": "Frontend & Backend / Results & Code Evaluation",
-      "routes": ["/quiz/result"],
-      "apiEndpoints": ["POST /api/quiz/submit"]
+      "role": "Frontend & Backend / Quiz Engine & Course CRUD",
+      "routes": ["/quiz/result", "/admin/courses"],
+      "apiEndpoints": [
+        "POST /api/quiz/submit",
+        "POST /api/admin/courses",
+        "DELETE /api/admin/courses/:id"
+      ],
+      "tests": ["backend/tests/courses_crud.test.js"]
     },
     {
       "taskId": "TASK-05",
       "name": "Хүслэн О.",
-      "role": "Frontend / Explore & Library",
+      "role": "Frontend / Explore Library with Search",
       "routes": ["/explore", "/explore/lecture/:id"],
-      "apiEndpoints": ["GET /api/courses/explore", "GET /api/lectures/:id"]
+      "apiEndpoints": ["GET /api/courses/explore", "GET /api/lectures/:id"],
+      "tests": ["frontend/src/tests/ExploreSearch.test.jsx"]
     },
     {
       "taskId": "TASK-06",
       "name": "Цогжавхлан Б.",
-      "role": "Frontend & QA / Leaderboard & UI States",
+      "role": "Frontend & QA / Leaderboard, UI States & E2E Testing",
       "routes": ["/leaderboard", "/ui-states"],
-      "apiEndpoints": ["GET /api/leaderboard"]
+      "apiEndpoints": ["GET /api/leaderboard"],
+      "tests": ["frontend/src/tests/Leaderboard.test.jsx", "e2e/responsive.spec.js"]
     }
   ]
 }

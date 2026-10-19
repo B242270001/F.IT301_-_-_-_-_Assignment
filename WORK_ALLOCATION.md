@@ -1,43 +1,13 @@
-# Ажлын Хуваарилалт ба Хуудасны Ангилал
+# 📋 WORK_ALLOCATION.md — Багийн гишүүдийн ажил хуваарилалт
 
-Системийн нийт хуудсуудыг багийн 6 гишүүнд агуулга, функцын төстэй байдлаар нь дараах байдлаар тэнцвэртэй хуваариллаа.
+Нийт гишүүд: 6  
+Төслийн нэр: StudyQuest (Gamified University Learning Platform)
 
----
-
-### 1. А. Төгөлдөр — *Системд нэвтрэх ба Ерөнхий хяналт*
-* **Нэвтрэх хуудас** *(Login)*
-* **Хянах самбар** *(Dashboard)*
-
-### 2. Мөнхбаяр — *Дадлагын сонголт ба асуулга*
-* **Дадлага хичээл сонгох** *(Dadlaga Hicheel Songoh)*
-* **Дадлага сонгох асуулт** *(DadlagaSongohAsuult)*
-
-### 3. Тэмүүлэн (Temka) — *Суралцах зам ба Сэдвийн жагсаалт*
-* **Дадлага суралцах зам** *(DadlagaSuralcahZam)*
-* **Судлах сэдвийн жагсаалт** *(SudlahSedviynZhagsaalt)*
-
-### 4. Д. Баттөмөр — *Дадлагын үр дүн ба Кодчиллын дүн*
-* **Дадлага хичээлийн үр дүн** *(Dadlaga HicheeliynUrDun)*
-* **Дадлага кодын үр дүн** *(DadlagaKodynUrDun)*
-
-### 5. Хүслэн О. — *Судлах хичээл ба Лекцийн сан*
-* **Судлах хичээлийн сан** *(Sudlah Hicheeliyn San)*
-* **React лекцийн дэлгэрэнгүй** *(Sudlah ReactLekciyn Delgerenguy)*
-
-### 6. Цогжавхлан Б. — *Чансаа ба Явцын төлөв / Тест*
-* **Долоо хоногийн чансаа** *(Chansaa DolooHonog)*
-* **StudyQuest харагдах төлөвийн хуудас** *(StudyQuestHaragdah Toloviyn Huudas)*
-* **Дадлагын үнэн эсвэл худал тест** *(DadlagaUnenEsvelHudal)*
-
----
-
-## 📊 Хуваарилалтын нэгдсэн хүснэгт
-
-| № | Нэр | Хариуцах хуудсууд (Монгол нэршил) | Нийт |
-|:-:|:---|:---|:-:|
-| 1 | **А. Төгөлдөр** | Нэвтрэх хуудас, Хянах самбар | 2 |
-| 2 | **Мөнхбаяр** | Дадлага хичээл сонгох, Дадлага сонгох асуулт | 2 |
-| 3 | **Тэмүүлэн** | Дадлага суралцах зам, Судлах сэдвийн жагсаалт | 2 |
-| 4 | **Д. Баттөмөр** | Дадлага хичээлийн үр дүн, Дадлага кодын үр дүн | 2 |
-| 5 | **Хүслэн О.** | Судлах хичээлийн сан, React лекцийн дэлгэрэнгүй | 2 |
-| 6 | **Цогжавхлан Б.** | Долоо хоногийн чансаа, StudyQuest харагдах төлөв, Үнэн/Худал тест | 3 |
+| Task ID | Хариуцагч | Үндсэн хариуцах дэлгэц & Модуль | Хариуцах Route & API / Тэст |
+|---|---|---|---|
+| **TASK-01** | **А. Төгөлдөр** | • Нэвтрэх хуудас (`Login`)<br>• Виртуаль өрөө Dashboard (`Dashboard`) | • `/login`, `/dashboard`<br>• `POST /api/auth/login`<br>• `GET /api/user/profile`<br>• Frontend Auth/Login Unit Test |
+| **TASK-02** | **Мөнхбаяр** | • Дадлага хичээл сонгох (`PracticeCourses`)<br>• Дадлага сонгох асуулт (`QuizQuestion`)<br>• Багшийн асуулт засах (`AdminQuestions`) | • `/practice`, `/quiz/:unitId`, `/admin/questions`<br>• `GET /api/courses/practice`<br>• `GET /api/quiz/:unitId`<br>• `POST /api/admin/questions` (CRUD 1)<br>• `PUT /api/admin/questions/:id` (CRUD 1) |
+| **TASK-03** | **Тэмүүлэн (Temka)** | • Дадлага суралцах хэвтээ зам (`HorizontalPath`)<br>• Судлах сэдвийн жагсаалт (`UnitTopics`) | • `/practice/:courseId`, `/topics`<br>• `GET /api/units/path/:courseId`<br>• `GET /api/topics/:unitId`<br>• Frontend Component Test (Path Render) |
+| **TASK-04** | **Д. Баттөмөр** | • Дадлага хичээлийн үр дүн (`QuizResult`)<br>• Дадлага кодын үр дүн (`CodeOutputResult`)<br>• Багшийн хичээл засах (`AdminCourses`) | • `/quiz/result`, `/admin/courses`<br>• `POST /api/quiz/submit`<br>• `POST /api/admin/courses` (CRUD 2)<br>• `DELETE /api/admin/courses/:id` (CRUD 2)<br>• Backend API integration test |
+| **TASK-05** | **Хүслэн О.** | • Судлах хичээлийн сан (`ExploreCourses`) - Хайлттай<br>• React лекцийн дэлгэрэнгүй (`ExploreLectureDetail`) | • `/explore`, `/explore/lecture/:id`<br>• `GET /api/courses/explore` (Search/Filter)<br>• `GET /api/lectures/:id`<br>• Interactive Component Test |
+| **TASK-06** | **Цогжавхлан Б.** | • Долоо хоногийн чансаа (`Leaderboard`)<br>• StudyQuest харагдах төлөвийн хуудас (`GlobalUIStates`) | • `/leaderboard`, `/ui-states`<br>• `GET /api/leaderboard`<br>• Automated End-to-End & Responsiveness Test |
