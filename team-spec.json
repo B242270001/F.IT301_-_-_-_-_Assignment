@@ -1,0 +1,48 @@
+{
+  "projectName": "StudyQuest",
+  "version": "1.0.0",
+  "teamMembers": [
+    {
+      "taskId": "TASK-01",
+      "name": "А. Төгөлдөр",
+      "role": "Frontend / Auth & Dashboard",
+      "routes": ["/login", "/dashboard"],
+      "apiEndpoints": ["POST /api/auth/login", "GET /api/user/profile"]
+    },
+    {
+      "taskId": "TASK-02",
+      "name": "Мөнхбаяр",
+      "role": "Frontend / Practice & Quiz",
+      "routes": ["/practice", "/quiz/:unitId"],
+      "apiEndpoints": ["GET /api/courses/practice", "GET /api/quiz/:unitId"]
+    },
+    {
+      "taskId": "TASK-03",
+      "name": "Тэмүүлэн (Temka)",
+      "role": "Frontend / Learning Path",
+      "routes": ["/practice/:courseId/path", "/topics"],
+      "apiEndpoints": ["GET /api/units/path/:courseId"]
+    },
+    {
+      "taskId": "TASK-04",
+      "name": "Д. Баттөмөр",
+      "role": "Frontend & Backend / Results & Code Evaluation",
+      "routes": ["/quiz/result"],
+      "apiEndpoints": ["POST /api/quiz/submit"]
+    },
+    {
+      "taskId": "TASK-05",
+      "name": "Хүслэн О.",
+      "role": "Frontend / Explore & Library",
+      "routes": ["/explore", "/explore/lecture/:id"],
+      "apiEndpoints": ["GET /api/courses/explore", "GET /api/lectures/:id"]
+    },
+    {
+      "taskId": "TASK-06",
+      "name": "Цогжавхлан Б.",
+      "role": "Frontend & QA / Leaderboard & UI States",
+      "routes": ["/leaderboard", "/ui-states"],
+      "apiEndpoints": ["GET /api/leaderboard"]
+    }
+  ]
+}
