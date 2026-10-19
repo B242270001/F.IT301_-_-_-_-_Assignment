@@ -10,7 +10,7 @@ export default (props) => {
 				<div className="flex justify-between items-center self-stretch bg-white py-[23px] px-12">
 					<div className="flex shrink-0 items-center gap-2.5">
 						<img
-							src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/vwfeqywm_expires_30_days.png"} 
+							src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/cd4bjolp_expires_30_days.png"} 
 							className="w-9 h-9 rounded-xl object-fill"
 						/>
 						<span className="text-[#28233D] text-[22px] font-bold" >
@@ -20,7 +20,7 @@ export default (props) => {
 					<div className="flex shrink-0 items-center">
 						<div className="flex shrink-0 items-center py-2.5 px-3.5 mr-[17px] gap-2">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/vrakdcnt_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/3pa9ghgk_expires_30_days.png"} 
 								className="w-[18px] h-[18px] object-fill"
 							/>
 							<span className="text-[#28233D] text-sm font-bold" >
@@ -49,7 +49,7 @@ export default (props) => {
 					<div className="flex shrink-0 items-center gap-5">
 						<div className="flex shrink-0 items-center gap-1.5">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/ldeirm8n_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/e2jp0dn8_expires_30_days.png"} 
 								className="w-5 h-5 object-fill"
 							/>
 							<span className="text-[#28233D] text-sm font-bold" >
@@ -58,7 +58,7 @@ export default (props) => {
 						</div>
 						<div className="flex shrink-0 items-center gap-1.5">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/h9wrftwh_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/1veegt4q_expires_30_days.png"} 
 								className="w-5 h-5 object-fill"
 							/>
 							<span className="text-[#28233D] text-sm font-bold" >
@@ -80,7 +80,7 @@ export default (props) => {
 					<div className="flex flex-col items-start bg-white w-[258px] pt-5 px-5 rounded-3xl border border-solid border-[#EAE6F3]">
 						<div className="flex items-center mb-[18px] gap-2">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/m24gsh95_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/xier9d7w_expires_30_days.png"} 
 								className="w-[17px] h-[17px] object-fill"
 							/>
 							<span className="text-[#7C5CFC] text-[13px] font-bold" >
@@ -104,7 +104,7 @@ export default (props) => {
 						</span>
 						<div className="flex items-center self-stretch bg-white mb-[18px] rounded-xl">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/n1atejtl_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/epcea7e3_expires_30_days.png"} 
 								className="w-[18px] h-[18px] ml-3 mr-2.5 rounded-xl object-fill"
 							/>
 							<input
@@ -116,7 +116,7 @@ export default (props) => {
 						</div>
 						<div className="flex items-center self-stretch bg-white mb-[18px] rounded-xl">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/qik69e3f_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/u402t56g_expires_30_days.png"} 
 								className="w-[18px] h-[18px] ml-3 mr-2.5 rounded-xl object-fill"
 							/>
 							<input
@@ -128,7 +128,7 @@ export default (props) => {
 						</div>
 						<div className="flex items-center self-stretch bg-[#EEE9FF] mb-[18px] rounded-xl">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/1tdl90y5_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/iqoslqa2_expires_30_days.png"} 
 								className="w-[18px] h-[18px] ml-3 mr-2.5 rounded-xl object-fill"
 							/>
 							<input
@@ -140,7 +140,7 @@ export default (props) => {
 						</div>
 						<div className="flex items-center self-stretch bg-white mb-[18px] rounded-xl">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/56gt6dtn_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/tut8q6a6_expires_30_days.png"} 
 								className="w-[18px] h-[18px] ml-3 mr-2.5 rounded-xl object-fill"
 							/>
 							<input
@@ -152,7 +152,7 @@ export default (props) => {
 						</div>
 						<div className="flex flex-col items-start self-stretch bg-[#FFF2DA] py-4 mb-[174px] gap-2.5 rounded-2xl">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/n5gq2toh_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/9k3o65v0_expires_30_days.png"} 
 								className="w-5 h-5 ml-4 rounded-2xl object-fill"
 							/>
 							<span className="text-[#28233D] text-[13px] font-bold w-[158px] ml-4" >
@@ -173,7 +173,7 @@ export default (props) => {
 							<button className="flex shrink-0 items-center bg-[#EEE9FF] text-left py-1.5 px-3 gap-1.5 rounded-[100px] border-0"
 								onClick={()=>alert("Pressed!")}>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/7f1n06bv_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/fh4d1hx7_expires_30_days.png"} 
 									className="w-[15px] h-[15px] rounded-[100px] object-fill"
 								/>
 								<span className="text-[#7C5CFC] text-xs font-bold" >
@@ -191,7 +191,7 @@ export default (props) => {
 										App.jsx
 									</span>
 									<img
-										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/51nranmr_expires_30_days.png"} 
+										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/zddvljiz_expires_30_days.png"} 
 										className="w-4 h-4 object-fill"
 									/>
 								</div>
@@ -211,7 +211,7 @@ export default (props) => {
 										</span>
 									</button>
 									<img
-										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/lp0khp5f_expires_30_days.png"} 
+										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/dgadho2t_expires_30_days.png"} 
 										className="w-[202px] h-5 rounded-2xl object-fill"
 									/>
 									<div className="flex items-center gap-3">
@@ -256,14 +256,14 @@ export default (props) => {
 							<button className="flex shrink-0 items-center bg-[#EEE9FF] text-left py-2.5 px-3.5 rounded-[10px] border-0"
 								onClick={()=>alert("Pressed!")}>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/u4qurvvx_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/q6lpw9gx_expires_30_days.png"} 
 									className="w-4 h-4 mr-2 rounded-[10px] object-fill"
 								/>
 								<span className="text-[#7C5CFC] text-[13px] font-bold mr-2.5" >
 									Дүрслэх алхмуудыг харах
 								</span>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/oqkck94t_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/457hwp94_expires_30_days.png"} 
 									className="w-4 h-4 rounded-[10px] object-fill"
 								/>
 							</button>
@@ -336,7 +336,7 @@ export default (props) => {
 									Сэдвийг дуусгах · +20 XP
 								</span>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/u78cv9an_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/b7p66v3f_expires_30_days.png"} 
 									className="w-[18px] h-[18px] rounded-2xl object-fill"
 								/>
 							</button>

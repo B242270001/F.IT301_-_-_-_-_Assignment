@@ -6,7 +6,7 @@ export default (props) => {
 				<div className="flex justify-between items-center self-stretch bg-white py-[23px] px-12">
 					<div className="flex shrink-0 items-center gap-2.5">
 						<img
-							src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/nlcoqqg1_expires_30_days.png"} 
+							src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/ky5vn5zq_expires_30_days.png"} 
 							className="w-9 h-9 rounded-xl object-fill"
 						/>
 						<span className="text-[#28233D] text-[22px] font-bold" >
@@ -16,7 +16,7 @@ export default (props) => {
 					<div className="flex shrink-0 items-center">
 						<div className="flex shrink-0 items-center py-2.5 px-3.5 mr-[17px] gap-2">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/5rws21js_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/0vva32pg_expires_30_days.png"} 
 								className="w-[18px] h-[18px] object-fill"
 							/>
 							<span className="text-[#28233D] text-sm font-bold" >
@@ -45,7 +45,7 @@ export default (props) => {
 					<div className="flex shrink-0 items-center gap-5">
 						<div className="flex shrink-0 items-center gap-1.5">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/9utu11vl_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/yob3u8u5_expires_30_days.png"} 
 								className="w-5 h-5 object-fill"
 							/>
 							<span className="text-[#28233D] text-sm font-bold" >
@@ -54,7 +54,7 @@ export default (props) => {
 						</div>
 						<div className="flex shrink-0 items-center gap-1.5">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/bk6w1jku_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/r7v6wjy4_expires_30_days.png"} 
 								className="w-5 h-5 object-fill"
 							/>
 							<span className="text-[#28233D] text-sm font-bold" >
@@ -84,7 +84,7 @@ export default (props) => {
 						</div>
 						<div className="flex shrink-0 items-center bg-white py-[13px] px-3.5 gap-2.5 rounded-[14px] border border-solid border-[#EAE6F3]">
 							<img
-								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/5a3wikj7_expires_30_days.png"} 
+								src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/x3ce259g_expires_30_days.png"} 
 								className="w-[18px] h-[18px] rounded-[14px] object-fill"
 							/>
 							<span className="text-[#817B94] text-sm" >
@@ -96,7 +96,7 @@ export default (props) => {
 						<div className="flex flex-1 flex-col items-start bg-[#EEE9FF] py-[21px] pr-[22px] mr-5 gap-3.5 rounded-3xl border border-solid border-[#C8BBFE]">
 							<div className="flex justify-between items-center self-stretch ml-[22px]">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/6sc73rna_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/w46e639d_expires_30_days.png"} 
 									className="w-11 h-11 rounded-xl object-fill"
 								/>
 								<span className="text-[#817B94] text-xs" >
@@ -122,7 +122,7 @@ export default (props) => {
 						<div className="flex flex-1 flex-col items-start bg-white py-[21px] pr-[22px] mr-[21px] gap-3.5 rounded-3xl border border-solid border-[#EAE6F3]">
 							<div className="flex justify-between items-center self-stretch ml-[22px]">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/6naq2unm_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/yqxdk2er_expires_30_days.png"} 
 									className="w-11 h-11 rounded-xl object-fill"
 								/>
 								<span className="text-[#817B94] text-xs" >
@@ -148,7 +148,7 @@ export default (props) => {
 						<div className="flex flex-1 flex-col items-start bg-white py-[21px] pr-[22px] gap-3.5 rounded-3xl border border-solid border-[#EAE6F3]">
 							<div className="flex justify-between items-center self-stretch ml-[22px]">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/tmeukimz_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/x5008rfx_expires_30_days.png"} 
 									className="w-11 h-11 rounded-xl object-fill"
 								/>
 								<span className="text-[#817B94] text-xs" >
@@ -184,7 +184,7 @@ export default (props) => {
 							</div>
 							<div className="flex items-center self-stretch bg-white p-2.5 mb-2 gap-3 rounded-xl">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/oef1khi5_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/mipovj50_expires_30_days.png"} 
 									className="w-8 h-8 rounded-[10px] object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-0.5">
@@ -196,13 +196,13 @@ export default (props) => {
 									</span>
 								</div>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/jwt9wqeq_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/75mf13nb_expires_30_days.png"} 
 									className="w-4 h-4 rounded-xl object-fill"
 								/>
 							</div>
 							<div className="flex items-center self-stretch bg-white p-2.5 mb-2 gap-3 rounded-xl">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/mxyjsnpy_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/xcezsfh6_expires_30_days.png"} 
 									className="w-8 h-8 rounded-[10px] object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-0.5">
@@ -214,13 +214,13 @@ export default (props) => {
 									</span>
 								</div>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/kgcnfj9y_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/ajk6ahys_expires_30_days.png"} 
 									className="w-4 h-4 rounded-xl object-fill"
 								/>
 							</div>
 							<div className="flex items-center self-stretch bg-[#EEE9FF] p-2.5 mb-2 gap-3 rounded-xl">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/4766ltyo_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/tzdgwdht_expires_30_days.png"} 
 									className="w-8 h-8 rounded-[10px] object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-0.5">
@@ -232,13 +232,13 @@ export default (props) => {
 									</span>
 								</div>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/q8ml6qxx_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/v7hpzs8c_expires_30_days.png"} 
 									className="w-4 h-4 rounded-xl object-fill"
 								/>
 							</div>
 							<div className="flex items-center self-stretch bg-white p-2.5 mb-2 gap-3 rounded-xl">
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/zgpjvuuf_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/jc2675ws_expires_30_days.png"} 
 									className="w-8 h-8 rounded-[10px] object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-0.5">
@@ -250,7 +250,7 @@ export default (props) => {
 									</span>
 								</div>
 								<img
-									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/is35j9gv_expires_30_days.png"} 
+									src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/x6ad99bx_expires_30_days.png"} 
 									className="w-4 h-4 rounded-xl object-fill"
 								/>
 							</div>
@@ -272,7 +272,7 @@ export default (props) => {
 								<button className="flex shrink-0 items-center bg-[#EEE9FF] text-left py-1.5 px-3 gap-1.5 rounded-[100px] border-0"
 									onClick={()=>alert("Pressed!")}>
 									<img
-										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/x43nbbxs_expires_30_days.png"} 
+										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/we4ey48u_expires_30_days.png"} 
 										className="w-[15px] h-[15px] rounded-[100px] object-fill"
 									/>
 									<span className="text-[#7C5CFC] text-xs font-bold" >
@@ -294,7 +294,7 @@ export default (props) => {
 									<div className="flex flex-col w-[245px] gap-2">
 										<div className="flex items-center self-stretch gap-2">
 											<img
-												src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/hblrqbzb_expires_30_days.png"} 
+												src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/fsucjxo9_expires_30_days.png"} 
 												className="w-4 h-4 object-fill"
 											/>
 											<span className="text-[#28233D] text-[13px]" >
@@ -303,7 +303,7 @@ export default (props) => {
 										</div>
 										<div className="flex items-center self-stretch gap-2">
 											<img
-												src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/yjzwsgtc_expires_30_days.png"} 
+												src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/lud1frop_expires_30_days.png"} 
 												className="w-4 h-4 object-fill"
 											/>
 											<span className="text-[#28233D] text-[13px]" >
@@ -312,7 +312,7 @@ export default (props) => {
 										</div>
 										<div className="flex items-center self-stretch gap-2">
 											<img
-												src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/37gse8co_expires_30_days.png"} 
+												src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/idt6zrzl_expires_30_days.png"} 
 												className="w-4 h-4 object-fill"
 											/>
 											<span className="text-[#28233D] text-[13px]" >
@@ -332,7 +332,7 @@ export default (props) => {
 										</span>
 									</button>
 									<img
-										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/bpk2l8my_expires_30_days.png"} 
+										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/q570wxy9_expires_30_days.png"} 
 										className="w-8 h-8 mb-3.5 rounded-2xl object-fill"
 									/>
 									<div className="flex items-center mb-[29px] gap-3">
@@ -361,7 +361,7 @@ export default (props) => {
 										Лекцээ нээх
 									</span>
 									<img
-										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/etax1dr1_expires_30_days.png"} 
+										src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/aN0ksSNPo6/g66vcmo8_expires_30_days.png"} 
 										className="w-[18px] h-[18px] rounded-2xl object-fill"
 									/>
 								</button>
