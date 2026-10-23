@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "U05",
+      "username": "temuulen",
+      "password": "123456",
+      "name": "Б. Тэмүүлэн",
+      "role": "STUDENT",
+      "major": "Программ хангамж · 2-р курс",
+      "xp": 2480,
+      "streak": 7,
+      "rank": 4,
+      "avatar": "Т",
+      "dailyGoal": { "current": 40, "target": 60 }
+    },
+    {
+      "id": "U10",
+      "username": "bagsh",
+      "password": "123456",
+      "name": "Д. Батбаяр",
+      "role": "TEACHER",
+      "major": "Багш · Программ хангамж",
+      "xp": 0,
+      "streak": 0,
+      "rank": null,
+      "avatar": "Б",
+      "dailyGoal": { "students": 5 }
+    },
+    {
+      "id": "U01",
+      "username": "anujin",
+      "password": "123456",
+      "name": "Д. Анужин",
+      "role": "STUDENT",
+      "major": "Программ хангамж · 3-р курс",
+      "xp": 3240,
+      "streak": 12,
+      "rank": 1,
+      "avatar": "А",
+      "dailyGoal": { "current": 60, "target": 60 }
+    }
+  ]
+}
