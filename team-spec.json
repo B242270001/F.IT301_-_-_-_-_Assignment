@@ -58,7 +58,7 @@
       "role": "Frontend & QA / Leaderboard, UI States & E2E Testing",
       "routes": ["/leaderboard", "/ui-states"],
       "apiEndpoints": ["GET /api/leaderboard"],
-      "tests": ["frontend/src/tests/Leaderboard.test.jsx", "e2e/responsive.spec.js"]
+      "tests": ["backend/tests/leaderboard.test.js", "e2e/leaderboard.spec.js", "e2e/ui-states.spec.js", "e2e/responsive.spec.js"]
     }
   ]
 }
