@@ -1,19 +1,37 @@
 import React, { useState } from "react";
+import { mockAuth } from "./mock";
 import virtualRoomNight from "./assets/virtualRoomNight.jpg";
 import "./Login.css";
 
 export default function Login({ onLogin }) {
   const [studentCode, setStudentCode] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     if (!studentCode || !password) {
-      alert("Оюутны код болон нууц үгээ оруулна уу!");
+      setError("Оюутны код болон нууц үгээ оруулна уу!");
       return;
     }
-    // Нэвтрэх функц дуудах
-    onLogin();
+
+    setLoading(true);
+    try {
+      const user = await mockAuth.login(studentCode, password);
+      if (!user) {
+        setError("Оюутны код эсвэл нууц үг буруу байна. Дахин оролдоно уу.");
+        setLoading(false);
+        return;
+      }
+      // Амжилттай нэвтэрсэн — user объектыг App-руу дамжуулна
+      onLogin(user);
+    } catch (err) {
+      setError("Сүлжээний алдаа гарлаа. Дахин оролдоно уу.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,13 +76,19 @@ export default function Login({ onLogin }) {
             <p>Өрөөндөө орж, мэдлэгийн аяллаа үргэлжлүүлээрэй.</p>
           </div>
 
+          {error && (
+            <div className="login-error" style={{ color: "#ef4444", background: "#fef2f2", padding: "8px 12px", borderRadius: "8px", marginBottom: "12px", fontSize: "14px" }}>
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="login-form">
             <div className="input-group">
-              <label>Оюутны код</label>
+              <label>Оюутны код (username)</label>
               <div className="input-field-wrapper">
                 <input
                   type="text"
-                  placeholder="BXXXXXXXXX"
+                  placeholder="жишээ: temuulen, bagsh"
                   value={studentCode}
                   onChange={(e) => setStudentCode(e.target.value)}
                 />
@@ -87,14 +111,16 @@ export default function Login({ onLogin }) {
               <a href="#forgot">Нууц үгээ мартсан уу?</a>
             </div>
 
-            <button type="submit" className="login-btn">
-              <span>Сэрэх</span>
+            <button type="submit" className="login-btn" disabled={loading}>
+              <span>{loading ? "Нэвтэрж байна..." : "Сэрэх"}</span>
               <span>🚀</span>
             </button>
           </form>
 
           <div className="form-footer-text">
-            <span>Сургуулийнхаа эрхээр нэвтэрнэ үү.</span>
+            <span style={{ fontSize: "12px", color: "#9ca3af" }}>
+              Demo: оюутан — <strong>temuulen / student123</strong> · багш — <strong>bagsh / teacher123</strong>
+            </span>
           </div>
         </div>
 

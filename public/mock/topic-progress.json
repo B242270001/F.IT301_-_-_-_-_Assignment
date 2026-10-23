@@ -1,0 +1,10 @@
+{
+  "topicProgress": [
+    { "userId": "U05", "topicId": "TP01", "status": "DONE", "knowledgeScore": 100 },
+    { "userId": "U05", "topicId": "TP02", "status": "DONE", "knowledgeScore": 80 },
+    { "userId": "U05", "topicId": "TP03", "status": "DONE", "knowledgeScore": 90 },
+    { "userId": "U05", "topicId": "TP04", "status": "NOT_STARTED", "knowledgeScore": 0 },
+    { "userId": "U05", "topicId": "TP05", "status": "NOT_STARTED", "knowledgeScore": 0 },
+    { "userId": "U05", "topicId": "TP06", "status": "NOT_STARTED", "knowledgeScore": 0 }
+  ]
+}

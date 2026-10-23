@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { mockAuth } from "./mock";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Leaderboard from "./Leaderboard";
@@ -9,29 +10,96 @@ import TeacherRoom from "./TeacherRoom";
 import TeacherCourseForm from "./TeacherCourseForm";
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(() => mockAuth.getCurrentUser());
 
-  // Нэвтрэх функц
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  // Нэвтрэх функц (Login хуудаснаас дуудагдана)
+  const handleLogin = (loggedInUser) => {
+    setUser(loggedInUser);
   };
 
   // Гарах (Ор дээр дарах) функц
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    mockAuth.logout();
+    setUser(null);
   };
+
+  const isLoggedIn = !!user;
+  const isTeacher = user?.role === "TEACHER";
+
+  /**
+   * Login-ы дараа role-ээр чиглүүлэх:
+   *   TEACHER  → /teacher
+   *   STUDENT  → /dashboard
+   */
+  const afterLoginRedirect = isTeacher ? "/teacher" : "/dashboard";
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
-        <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to={afterLoginRedirect} />
+            ) : (
+              <Login onLogin={handleLogin} />
+            )
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            isLoggedIn ? (
+              <Dashboard user={user} onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            isLoggedIn ? (
+              <Leaderboard user={user} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
         <Route path="/ui-states" element={<GlobalUIStates />} />
         {/* TASK-04: Д. Баттөмөр */}
-        <Route path="/quiz/result" element={<QuizResult />} />
-        <Route path="/teacher" element={<TeacherRoom />} />
-        <Route path="/teacher/courses/new" element={<TeacherCourseForm />} />
+        <Route
+          path="/quiz/result"
+          element={
+            isLoggedIn ? (
+              <QuizResult user={user} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/teacher"
+          element={
+            isLoggedIn && isTeacher ? (
+              <TeacherRoom user={user} onLogout={handleLogout} />
+            ) : isLoggedIn ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/teacher/courses/new"
+          element={
+            isLoggedIn && isTeacher ? (
+              <TeacherCourseForm user={user} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
