@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Student portrait">
+<g clip-path="url(#clip0_0_15)">
+<rect width="68" height="68" rx="34" fill="#E2D8FF"/>
+<ellipse id="Sweater" cx="35.36" cy="66.3" rx="27.2" ry="22.1" fill="#7C5CFC"/>
+<ellipse id="Hair" cx="34" cy="29.58" rx="19.72" ry="22.78" fill="#342B43"/>
+<ellipse id="Face" cx="34.34" cy="34" rx="14.62" ry="16.32" fill="#F4BFA0"/>
+<ellipse id="Fringe" cx="34.34" cy="18.36" rx="16.66" ry="7.48" fill="#342B43"/>
+<circle id="Eye" cx="28.02" cy="32.78" r="1.5" fill="#342B43"/>
+<circle id="Eye_2" cx="41.62" cy="32.78" r="1.5" fill="#342B43"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_15">
+<rect width="68" height="68" rx="34" fill="white"/>
+</clipPath>
+</defs>
+</svg>
