@@ -1,136 +1,148 @@
-# 🌐 SPA Хуудас (Routes) болон REST API Endpoints Жагсаалт
+# 04. SPA хуудас ба REST API гэрээ
 
-Энэхүү баримт бичиг нь **StudyQuest** платформын Frontend Route болон Backend REST API Endpoint-уудыг багийн гишүүдийн Task ID, хариуцах модуль, болон хэрэглэгчийн эрхтэй (Role: `STUDENT`, `TEACHER`) холбон тодорхойлсон гэрээ (Contract) юм.
+> Энэ баримт нь [../team-spec.json](../team-spec.json)-той яг нийцнэ. Өөрчлөлт хийвэл хоёуланг хамт шинэчилнэ.
+> Lab 3: backend байхгүй, mock store ажиллана. Lab 4–6: доорх API бодитоор хэрэгжинэ.
 
----
+## 1. SPA route (12)
 
-## 📱 1. Frontend SPA Routes Жагсаалт (Нийт 13 Route)
-
-| № | Route / Path | Хуудасны нэр (Component) | Role | Task ID | Хариуцагч | Тайлбар / Үйлдэл |
+| № | Route | Хуудас | `data-testid` | Эрх | Эзэн | API |
 |---|---|---|---|---|---|---|
-| 1 | `/login` | `LoginScreen` | Public | `TASK-01` | **А. Төгөлдөр** | Системд нэвтрэх, унтаж буй оюутныг сэрээх дэлгэц |
-| 2 | `/dashboard` | `VirtualRoomDashboard` | Student/Teacher | `TASK-01` | **А. Төгөлдөр** | Виртуаль өрөөний хянах самбар, навигацийн биетүүд |
-| 3 | `/practice` | `PracticeCourses` | Student | `TASK-02` | **Мөнхбаяр** | Дадлага хичээлүүдийн хавтас сонгох |
-| 4 | `/quiz/:unitId` | `QuizQuestion` | Student | `TASK-02` | **Мөнхбаяр** | Асуулт хариулт, кодын гаралт таах дэлгэц |
-| 5 | `/admin/questions` | `AdminQuestions` | **Teacher** | `TASK-02` | **Мөнхбаяр** | **[CRUD 1]** Асуултын банк үүсгэх, засах, устгах |
-| 6 | `/practice/:courseId` | `HorizontalLearningPath` | Student | `TASK-03` | **Тэмүүлэн (Temka)** | Хэвтээ чиглэлтэй Duolingo стилийн сургалтын зам |
-| 7 | `/topics` | `UnitTopics` | Student | `TASK-03` | **Тэмүүлэн (Temka)** | Нэгж доторх судлах сэдвүүдийн жагсаалт |
-| 8 | `/quiz/result` | `QuizResult` | Student | `TASK-04` | **Д. Баттөмөр** | Тестийн үр дүн, цуглуулсан XP болон статистик |
-| 9 | `/admin/courses` | `AdminCourses` | **Teacher** | `TASK-04` | **Д. Баттөмөр** | **[CRUD 2]** Дадлага хичээл шинээр үүсгэх, засах, устгах |
-| 10 | `/explore` | `ExploreCourses` | Student | `TASK-05` | **Хүслэн О.** | Лекцийн сан (Хайлт & Шүүлтүүртэй) |
-| 11 | `/explore/lecture/:id` | `ExploreLectureDetail` | Student | `TASK-05` | **Хүслэн О.** | Интерактив лекц, Демо (Render хийх) & Knowledge Check |
-| 12 | `/leaderboard` | `Leaderboard` | Student/Teacher | `TASK-06` | **Цогжавхлан Б.** | Долоо хоногийн болон нийт XP-ийн чансаа (Podium) |
-| 13 | `/ui-states` | `GlobalUIStates` | Internal/QA | `TASK-06` | **Цогжавхлан Б.** | Сүлжээний алдаа, Хоосон төлөв, Глобал Модалууд |
+| 1 | `/login` | Нэвтрэх | `page-login` | Бүгд | TASK-01 | `POST /api/auth/login` |
+| 2 | `/dashboard` | Миний өрөө | `page-dashboard` | Student, Teacher | TASK-01 | `GET /api/user/profile` |
+| 3 | `/practice` | Хичээл сонгох | `page-practice` | Student | TASK-02 | `GET /api/courses/practice` |
+| 4 | `/practice/:courseId` | Суралцах зам | `page-learning-path` | Student | TASK-03 | `GET /api/units/path/:courseId` |
+| 5 | `/quiz/:unitId` | Асуулт | `page-quiz` | Student | TASK-02 | `GET /api/quiz/:unitId`, `POST /api/quiz/check` |
+| 6 | `/quiz/result` | Үр дүн | `page-quiz-result` | Student | TASK-03 | `POST /api/quiz/submit`, `GET /api/attempts/latest` |
+| 7 | `/explore` | Хичээлийн сан | `page-explore` | Student, Teacher | TASK-05 | `GET /api/courses/explore` |
+| 8 | `/topics/:courseId` | Сэдвийн жагсаалт | `page-topics` | Student, Teacher | TASK-05 | `GET /api/courses/:courseId/topics` |
+| 9 | `/explore/lecture/:id` | Лекц | `page-lecture` | Student, Teacher | TASK-05 | `GET/PUT/DELETE /api/lectures/:id`, `POST /api/lectures/:id/knowledge-check` |
+| 10 | `/leaderboard` | Чансаа | `page-leaderboard` | Student, Teacher | TASK-06 | `GET /api/leaderboard` |
+| 11 | `/teacher` | Удирдах өрөө | `page-teacher-room` | Teacher | TASK-04 | `GET /api/teacher/overview`, `PUT/DELETE /api/teacher/courses/:id` |
+| 12 | `/teacher/courses/new` | Хичээл нэмэх | `page-teacher-course-form` | Teacher | TASK-04 | `POST /api/teacher/courses`, `POST /api/teacher/lectures`, `POST /api/uploads/material` |
 
----
+**Route-ийн зохион байгуулалт:**
+- `/` нь нэвтэрсэн бол `/dashboard`, үгүй бол `/login` руу redirect хийнэ (spec-ийн route биш).
+- Static `/quiz/result`-ыг `/quiz/:unitId`-тэй андуурахгүй: static route-ийг тусдаа тодорхойлно (React Router v6 static segment-ийг өндөр эрэмбэлнэ).
+- Тодорхойгүй path → `page-not-found` (`state-not-found`).
+- Хамгаалагдсан route дээр нэвтрээгүй бол wrapper `page-*` + `state-login-required`; role таарахгүй бол `page-*` + `state-forbidden`. Mock горимд хуудас ингэж шууд URL-аар нээгдэнэ.
 
-## 🛠️ 2. Backend REST API Endpoints Жагсаалт (Нийт 13 Endpoints)
+## 2. Нийтлэг гэрээ
 
-### 🔐 Auth & Profile (TASK-01)
-* **`POST /api/auth/login`**
-  * **Role:** Public
-  * **Description:** Оюутны код болон нууц үгээр нэвтэрч JWT Token авах.
-  * **Request:** `{ "studentId": "B200900123", "password": "password123" }`
-  * **Response (200 OK):** `{ "token": "jwt_token...", "user": { "id": "1", "displayName": "Бат-Эрдэнэ", "role": "STUDENT" } }`
+- Auth: `Authorization: Bearer <JWT>`. Mock горимд session нь `localStorage` `studyquest.session`.
+- Алдааны хэлбэр: `{ "message": "Нэр оруулна уу", "field": "title" }` (`field` заавал биш).
+- **Статус:** буруу оролт **422**; нэвтрээгүй **401**; role/эзэмшил таарахгүй **403**; байхгүй record **404**; файлын хэмжээ хэтэрсэн **413**.
+- POST/PUT алдаатай үед record үүсгэх, өөрчлөхгүй. **DELETE нь 204, body-гүй.**
+- `passwordHash`, quiz-ийн `correctAnswer` нь `GET` response-д буцахгүй.
 
-* **`GET /api/user/profile`**
-  * **Role:** Student / Teacher
-  * **Description:** Нэвтэрсэн хэрэглэгчийн профиль, нийт XP, Streak хоногийн мэдээлэл авах.
-  * **Response (200 OK):** `{ "id": "1", "displayName": "Бат-Эрдэнэ", "totalXp": 350, "streakDays": 5 }`
+## 3. REST API (22 endpoint)
 
----
+| № | Method | Path | Эрх | Амжилт | Алдаа | Эзэн |
+|---|---|---|---|---|---|---|
+| 1 | GET | `/api/health` | Бүгд | 200 `{status:"ok"}` | — | TASK-06 |
+| 2 | POST | `/api/auth/login` | Зочин | 200 | 401, 422 | TASK-01 |
+| 3 | GET | `/api/user/profile` | Student, Teacher | 200 | 401 | TASK-01 |
+| 4 | GET | `/api/courses/practice` | Student | 200 | 401, 403 | TASK-02 |
+| 5 | GET | `/api/quiz/:unitId` | Student | 200 | 401, 403, 404 | TASK-02 |
+| 6 | POST | `/api/quiz/check` | Student | 200 | 401, 403, 404, 422 | TASK-02 |
+| 7 | POST | `/api/quiz/submit` | Student | 201 | 401, 403, 404, 422 | TASK-02 |
+| 8 | GET | `/api/units/path/:courseId` | Student | 200 | 401, 403, 404 | TASK-03 |
+| 9 | GET | `/api/attempts/latest` | Student | 200 | 401, 403, 404 | TASK-03 |
+| 10 | GET | `/api/teacher/overview` | Teacher | 200 | 401, 403 | TASK-04 |
+| 11 | POST | `/api/teacher/courses` | Teacher | 201 | 401, 403, 422 | TASK-04 |
+| 12 | PUT | `/api/teacher/courses/:id` | Teacher | 200 | 401, 403, 404, 422 | TASK-04 |
+| 13 | DELETE | `/api/teacher/courses/:id` | Teacher | 204 | 401, 403, 404 | TASK-04 |
+| 14 | POST | `/api/teacher/lectures` | Teacher | 201 | 401, 403, 404, 422 | TASK-04 |
+| 15 | POST | `/api/uploads/material` | Teacher | 201 | 401, 403, 413, 422 | TASK-04 |
+| 16 | GET | `/api/courses/explore` | Student, Teacher | 200 | 401 | TASK-05 |
+| 17 | GET | `/api/courses/:courseId/topics` | Student, Teacher | 200 | 401, 404 | TASK-05 |
+| 18 | GET | `/api/lectures/:id` | Student, Teacher | 200 | 401, 404 | TASK-05 |
+| 19 | PUT | `/api/lectures/:id` | Teacher | 200 | 401, 403, 404, 422 | TASK-05 |
+| 20 | DELETE | `/api/lectures/:id` | Teacher | 204 | 401, 403, 404 | TASK-05 |
+| 21 | POST | `/api/lectures/:id/knowledge-check` | Student | 200 | 401, 403, 404, 422 | TASK-05 |
+| 22 | GET | `/api/leaderboard` | Student, Teacher | 200 | 401, 422 | TASK-06 |
 
-### 📝 Practice & Quiz Management (TASK-02 & TASK-04)
-* **`GET /api/courses/practice`**
-  * **Role:** Student
-  * **Description:** Оюутны дадлага хийж болох хичээлүүдийн жагсаалт ба прогресс авах.
-  * **Response (200 OK):** `[ { "id": "c1", "title": "Веб систем ба технологи", "progress": 45 } ]`
+## 4. Endpoint-ийн дэлгэрэнгүй
 
-* **`GET /api/quiz/:unitId`**
-  * **Role:** Student
-  * **Description:** Тухайн нэгжийн (Unit) асуултуудыг татаж авах.
-  * **Response (200 OK):** `[ { "id": "q1", "questionText": "React-д state хэрхэн зарлах вэ?", "options": [...] } ]`
+### TASK-01 — Auth
+**POST `/api/auth/login`**
+```json
+// Request
+{ "username": "saruul", "password": "student123" }
+// 200
+{ "token": "jwt...", "user": { "id": "U01", "displayName": "Саруул", "role": "STUDENT" } }
+// 422 { "message": "Нэр оруулна уу", "field": "username" }
+// 401 { "message": "Нэр эсвэл нууц үг буруу байна" }
+```
+**GET `/api/user/profile`** → 200 `{ "id":"U01","displayName":"Саруул","role":"STUDENT","totalXp":890,"todayXp":40,"dailyGoalXp":60,"streakDays":5,"rank":4 }`; 401 токенгүй.
 
-* **`POST /api/quiz/submit`**
-  * **Role:** Student
-  * **Description:** Асуултын хариултуудыг шалгуулан, авсан XP-ийг бодож хэрэглэгчийн оноонд нэмэх.
-  * **Request:** `{ "unitId": "u1", "answers": [ { "questionId": "q1", "answer": "useState" } ] }`
-  * **Response (200 OK):** `{ "scorePercent": 100, "xpEarned": 40, "totalXp": 390 }`
+### TASK-02 — Practice ба Quiz
+**GET `/api/courses/practice`** → 200 `[ { "id":"C01","title":"Веб систем ба технологи","icon":"web","unitCount":6,"progress":45,"isFeatured":true } ]`
 
----
+**GET `/api/quiz/:unitId`** → 200 `{ "unitId":"UN04","title":"HTML ба CSS","questions":[ { "id":"Q03","type":"CODE_OUTPUT","questionText":"...","codeSnippet":"...","options":["a","b","c"],"xpReward":10 } ] }` (`correctAnswer` байхгүй).
 
-### ✏️ Teacher Admin CRUD 1: Questions (TASK-02)
-* **`POST /api/admin/questions`**
-  * **Role:** **Teacher**
-  * **Description:** **[CRUD 1 - Create]** Шинэ дадлага асуулт банк руу нэмэх.
-  * **Request:** `{ "unitId": "u1", "questionText": "...", "correctAnswer": "...", "options": [...] }`
-  * **Response (201 Created):** `{ "id": "q99", "message": "Асуулт амжилттай үүслээ" }`
+**POST `/api/quiz/check`** — нэг асуултыг шалгана (inline feedback).
+```json
+// Request  { "questionId": "Q01", "answer": "useState" }
+// 200      { "isCorrect": true, "correctAnswer": "useState", "explanation": "..." }
+// 422      { "message": "Хариулт сонгоно уу", "field": "answer" }
+```
 
-* **`PUT /api/admin/questions/:id`**
-  * **Role:** **Teacher**
-  * **Description:** **[CRUD 1 - Update]** Одоо байгаа асуултын агуулгыг засаж шинэчлэх.
-  * **Request:** `{ "questionText": "Шинэчлэгдсэн асуулт", "correctAnswer": "..." }`
-  * **Response (200 OK):** `{ "id": "q99", "message": "Асуулт шинэчлэгдлээ" }`
+**POST `/api/quiz/submit`** — attempt үүсгэж, XP болон progress шинэчилнэ.
+```json
+// Request
+{ "unitId": "UN04", "answers": [ { "questionId": "Q01", "answer": "useState" } ] }
+// 201
+{ "attemptId": "A01", "scorePercent": 100, "correctCount": 4, "totalCount": 4, "xpEarned": 40, "totalXp": 930 }
+// 422 { "message": "Бүх асуултад хариулна уу", "field": "answers" }
+```
 
----
+### TASK-03 — Зам ба үр дүн
+**GET `/api/units/path/:courseId`** → 200 `{ "courseTitle":"Веб систем ба технологи","progress":45,"sections":[ { "title":"Вебийн үндэс","units":[ { "id":"UN01","title":"Вебийн архитектур","status":"COMPLETED" } ] } ] }`; 404 хичээл олдоогүй.
 
-### ✏️ Teacher Admin CRUD 2: Courses (TASK-04)
-* **`POST /api/admin/courses`**
-  * **Role:** **Teacher**
-  * **Description:** **[CRUD 2 - Create]** Шинэ хичээл үүсгэн системд нэмэх.
-  * **Request:** `{ "title": "Мобайл хөгжүүлэлт", "description": "React Native үндэс", "icon": "mobile" }`
-  * **Response (201 Created):** `{ "id": "c99", "title": "Мобайл хөгжүүлэлт" }`
+**GET `/api/attempts/latest`** → 200 `{ "attemptId":"A01","unitId":"UN04","courseId":"C01","scorePercent":75,"correctCount":3,"totalCount":4,"xpEarned":30,"unitProgress":100,"courseProgress":55,"weakTopics":["JS Events"] }`; 404 attempt байхгүй (UI хоосон төлөв харуулна).
 
-* **`DELETE /api/admin/courses/:id`**
-  * **Role:** **Teacher**
-  * **Description:** **[CRUD 2 - Delete]** Шаардлагагүй хичээлийг системээс устгах.
-  * **Response (200 OK):** `{ "message": "Хичээл амжилттай устгагдлаа" }`
+### TASK-04 — Багш
+**GET `/api/teacher/overview`** → 200
+```json
+{ "stats": { "courseCount": 3, "studentCount": 5, "avgScore": 78, "attemptCount": 12 },
+  "xpByCourse": [ { "courseId": "C01", "title": "Веб систем ба технологи", "xp": 2400 } ],
+  "courses": [ { "id":"C01","title":"...","category":"WEB","unitCount":6,"lectureCount":1 } ],
+  "students": [ { "id":"U01","displayName":"Саруул","totalXp":890,"streakDays":5,"lastActiveAt":"2026-10-23T09:00:00Z" } ] }
+```
+**POST `/api/teacher/courses`** (201) / **PUT `/api/teacher/courses/:id`** (200)
+```json
+// Request
+{ "title": "Мобайл хөгжүүлэлт", "description": "React Native үндэс", "category": "PROGRAMMING", "icon": "mobile" }
+// 201/200  { "course": { "id": "C04", "title": "Мобайл хөгжүүлэлт" } }
+// 422      { "message": "Хичээлийн нэр оруулна уу", "field": "title" }   // PUT-д 404 олдоогүй
+```
+**DELETE `/api/teacher/courses/:id`** → 204, body-гүй; 404; 403 (student). Холбогдох Unit/Topic/Lecture устна.
 
----
+**POST `/api/teacher/lectures`** → 201 `{ "lecture": { "id":"L06","title":"..." } }`. Request: `{ "courseId","topicTitle" (эсвэл "topicId"),"title","summary","content","codeSample","demoType","materials":[...],"knowledgeCheck":[...] }`. 422 `{ "message":"Лекцийн гарчиг оруулна уу","field":"title" }`.
 
-### 🗺️ Learning Path & Topics (TASK-03)
-* **`GET /api/units/path/:courseId`**
-  * **Role:** Student
-  * **Description:** Тухайн хичээлийн хэвтээ замд харагдах Нэгжүүд (Completed, Current, Locked) авах.
-  * **Response (200 OK):** `{ "courseTitle": "Веб систем", "units": [ { "id": "u1", "status": "COMPLETED" }, { "id": "u2", "status": "CURRENT" } ] }`
+**POST `/api/uploads/material`** — `multipart/form-data`, `file` талбар. Зөвхөн pdf, pptx, docx, png, jpg; ≤ 10 MB.
+`201 { "url":"/uploads/slides.pdf","name":"slides.pdf","sizeBytes":1258291 }`; 422 буруу төрөл; 413 хэмжээ хэтэрсэн; 401 нэвтрээгүй; 403 Student.
 
-* **`GET /api/topics/:unitId`**
-  * **Role:** Student
-  * **Description:** Нэгжийн доторх сэдвүүдийг жагсаалтаар авах.
+### TASK-05 — Судлах
+**GET `/api/courses/explore?search=react&category=WEB`** → 200 `[ { "id":"C01","title":"...","category":"WEB","topicCount":6,"lectureCount":1 } ]` (`search` нь нэр/тайлбараар, том жижгийг ялгахгүй; `category` нь enum, буруу утга 422). Илэрц байхгүй бол `[]`.
 
----
+**GET `/api/courses/:courseId/topics`** → 200 `{ "courseTitle":"...","progress":33,"topics":[ { "id":"TP05","title":"React Components","order":5,"status":"DONE","lectureId":"L05" } ] }`; 404.
 
-### 📖 Explore & Library (TASK-05)
-* **`GET /api/courses/explore?search={query}&category={cat}`**
-  * **Role:** Student
-  * **Description:** Мэдлэгийн сангаас лекцийн хичээлүүдийг хайх (Search) болон шүүж (Filter) авах.
-  * **Response (200 OK):** `[ { "id": "e1", "title": "React Components", "category": "Frontend" } ]`
+**GET `/api/lectures/:id`** → 200 `{ "id":"L05","title":"React Components","content":"...","codeSample":"...","demoType":"REACT_RENDER","materials":[],"knowledgeCheck":[ { "question":"...","options":[...] } ],"topics":[ {"id":"TP01","title":"Client-Server","lectureId":"L01"} ] }`; 404.
 
-* **`GET /api/lectures/:id`**
-  * **Role:** Student
-  * **Description:** Интерактив лекцийн агуулга, кодын дээж болон Демо мэдээллийг татах.
+**PUT `/api/lectures/:id`** (Teacher) → 200 засагдсан lecture; 422 `{ "message":"Лекцийн гарчиг оруулна уу","field":"title" }`. **DELETE** → 204, body-гүй.
 
----
+**POST `/api/lectures/:id/knowledge-check`** → Request `{ "answers": ["...","..."] }`; 200 `{ "correctCount":2,"totalCount":2,"topicStatus":"DONE" }`; 422 хариулаагүй асуулттай үед.
 
-### 🏆 Leaderboard (TASK-06)
-* **`GET /api/leaderboard?period={weekly|allTime}`**
-  * **Role:** Student / Teacher
-  * **Description:** Нийт цуглуулсан XP дээр суурилсан чансааны жагсаалтыг татах.
-  * **Response (200 OK):** `[ { "rank": 1, "name": "Бат-Эрдэнэ", "xp": 1240 }, { "rank": 2, "name": "Номин", "xp": 1120 } ]`
+### TASK-06 — Чансаа ба техникийн
+**GET `/api/leaderboard?period=weekly|allTime`** → 200 `[ { "rank":1,"userId":"U02","name":"Бат-Эрдэнэ","xp":1240,"change":0 }, { "rank":4,"userId":"U01","name":"Саруул","xp":890,"change":1,"isMe":true } ]`. `period` өөр утгатай бол 422. Багш жагсаалтад орохгүй.
 
----
+**GET `/api/health`** → 200 `{ "status": "ok" }`.
 
-## 🔄 3. SPA Page болон API-ын Холбоосын Тараагч Схем
+## 5. Хүлээн авах шалгуур
 
-```text
-[ /login ]                   ---> POST /api/auth/login
-[ /dashboard ]               ---> GET  /api/user/profile
-[ /practice ]                ---> GET  /api/courses/practice
-[ /practice/:courseId ]      ---> GET  /api/units/path/:courseId
-[ /quiz/:unitId ]            ---> GET  /api/quiz/:unitId
-[ /quiz/result ]             ---> POST /api/quiz/submit
-[ /explore ]                 ---> GET  /api/courses/explore?search=...
-[ /explore/lecture/:id ]     ---> GET  /api/lectures/:id
-[ /leaderboard ]             ---> GET  /api/leaderboard
-[ /admin/questions ]         ---> POST & PUT /api/admin/questions (CRUD 1)
-[ /admin/courses ]           ---> POST & DELETE /api/admin/courses (CRUD 2)
+- Хоосон нэртэй `POST /api/teacher/courses` → 422, дараагийн `GET /api/teacher/overview`-д шинэ хичээл үүсээгүй.
+- Student токентой `DELETE /api/teacher/courses/:id` → 403; токенгүй → 401; байхгүй id → 404; амжилттай → 204 body-гүй.
+- UI: хичээл нэмэх → жагсаалтад харах → засах → устгах урсгал ажиллана.
+- Lab 3-д дээрх бүх урсгал mock store дээр ажиллаж, `/api` руу ямар ч хүсэлт явахгүй.
+- Бүх endpoint-ийн route, status, scenario `team-spec.json`-д бүртгэгдсэн.

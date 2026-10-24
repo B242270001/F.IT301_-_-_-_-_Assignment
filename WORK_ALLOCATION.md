@@ -1,13 +1,137 @@
-# 📋 WORK_ALLOCATION.md — Багийн гишүүдийн ажил хуваарилалт
+# Ажлын хуваарилалт — StudyQuest
 
-Нийт гишүүд: 6  
-Төслийн нэр: StudyQuest (Gamified University Learning Platform)
+Нийт гишүүд: 6 · Төсөл: StudyQuest (Gamified University Learning Platform)
+Баримтууд: [docs/01-idea.md](docs/01-idea.md), [docs/02-wireframes.md](docs/02-wireframes.md), [docs/03-data-model.md](docs/03-data-model.md), [docs/04-api-pages.md](docs/04-api-pages.md), [team-spec.json](team-spec.json)
 
-| Task ID | Хариуцагч | Үндсэн хариуцах дэлгэц & Модуль | Хариуцах Route & API / Тэст |
+> **Төлөв:** Багшаар батлуулах хүлээгдэж байна. `REPLACE_*` гэсэн утгуудыг гишүүн бүр өөрийн бодит мэдээллээр солино.
+
+## 1. Гишүүд
+
+| taskId | Гишүүн | Оюутны код | Git email | Хэсэг |
+|---|---|---|---|---|
+| TASK-01 | А. Төгөлдөр | B242270001 | B242270001@must.edu.mn | Auth, Dashboard, Router, Role guard |
+| TASK-02 | Мөнхбаяр | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Practice, Quiz engine |
+| TASK-03 | Тэмүүлэн (Temka) | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Learning path, Quiz result, Mock store |
+| TASK-04 | Д. Баттөмөр | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Багшийн өрөө, Course CRUD, Upload |
+| TASK-05 | Хүслэн О. | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Explore, Topics, Lecture |
+| TASK-06 | Цогжавхлан Б. | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Leaderboard, UI states, E2E, Docker |
+
+## 2. Модулийн эзэмшил (12 хуудас, 22 endpoint)
+
+| taskId | Route (хуудас) | API method ба path | Entity |
 |---|---|---|---|
-| **TASK-01** | **А. Төгөлдөр** | • Нэвтрэх хуудас (`Login`)<br>• Виртуаль өрөө Dashboard (`Dashboard`) | • `/login`, `/dashboard`<br>• `POST /api/auth/login`<br>• `GET /api/user/profile`<br>• Frontend Auth/Login Unit Test |
-| **TASK-02** | **Мөнхбаяр** | • Дадлага хичээл сонгох (`PracticeCourses`)<br>• Дадлага сонгох асуулт (`QuizQuestion`)<br>• Багшийн асуулт засах (`AdminQuestions`) | • `/practice`, `/quiz/:unitId`, `/admin/questions`<br>• `GET /api/courses/practice`<br>• `GET /api/quiz/:unitId`<br>• `POST /api/admin/questions` (CRUD 1)<br>• `PUT /api/admin/questions/:id` (CRUD 1) |
-| **TASK-03** | **Тэмүүлэн (Temka)** | • Дадлага суралцах хэвтээ зам (`HorizontalPath`)<br>• Судлах сэдвийн жагсаалт (`UnitTopics`) | • `/practice/:courseId`, `/topics`<br>• `GET /api/units/path/:courseId`<br>• `GET /api/topics/:unitId`<br>• Frontend Component Test (Path Render) |
-| **TASK-04** | **Д. Баттөмөр** | • Дадлага хичээлийн үр дүн (`QuizResult`)<br>• Дадлага кодын үр дүн (`CodeOutputResult`)<br>• Багшийн хичээл засах (`AdminCourses`) | • `/quiz/result`, `/admin/courses`<br>• `POST /api/quiz/submit`<br>• `POST /api/admin/courses` (CRUD 2)<br>• `DELETE /api/admin/courses/:id` (CRUD 2)<br>• Backend API integration test |
-| **TASK-05** | **Хүслэн О.** | • Судлах хичээлийн сан (`ExploreCourses`) - Хайлттай<br>• React лекцийн дэлгэрэнгүй (`ExploreLectureDetail`) | • `/explore`, `/explore/lecture/:id`<br>• `GET /api/courses/explore` (Search/Filter)<br>• `GET /api/lectures/:id`<br>• Interactive Component Test |
-| **TASK-06** | **Цогжавхлан Б.** | • Долоо хоногийн чансаа (`Leaderboard`)<br>• StudyQuest харагдах төлөвийн хуудас (`GlobalUIStates`) | • `/leaderboard`, `/ui-states`<br>• `GET /api/leaderboard`<br>• Automated End-to-End & Responsiveness Test |
+| TASK-01 | `/login`, `/dashboard` | `POST /api/auth/login`, `GET /api/user/profile` | User |
+| TASK-02 | `/practice`, `/quiz/:unitId` | `GET /api/courses/practice`, `GET /api/quiz/:unitId`, `POST /api/quiz/check`, `POST /api/quiz/submit` | QuizQuestion, QuizAttempt |
+| TASK-03 | `/practice/:courseId`, `/quiz/result` | `GET /api/units/path/:courseId`, `GET /api/attempts/latest` | Unit, UserProgress |
+| TASK-04 | `/teacher`, `/teacher/courses/new` | `GET /api/teacher/overview`, `POST/PUT/DELETE /api/teacher/courses[/:id]`, `POST /api/teacher/lectures`, `POST /api/uploads/material` | Course (CRUD), Lecture (Create) |
+| TASK-05 | `/explore`, `/topics/:courseId`, `/explore/lecture/:id` | `GET /api/courses/explore`, `GET /api/courses/:courseId/topics`, `GET/PUT/DELETE /api/lectures/:id`, `POST /api/lectures/:id/knowledge-check` | Topic, TopicProgress, Lecture (Read/Update/Delete) |
+| TASK-06 | `/leaderboard` | `GET /api/leaderboard`, `GET /api/health` | Leaderboard view |
+
+Нэг route-ийн ижил үйлдэл, ижил API method+path, ижил тест хоёр гишүүнд давхар оноогдоогүй. Lecture entity-ийн Create (TASK-04) болон Read/Update/Delete (TASK-05) нь ялгаатай taskId, ялгаатай шалгуурт хуваагдсан.
+
+## 3. Хамтын файлын эзэмшил
+
+| Файл | Үндсэн эзэн | Тайлбар |
+|---|---|---|
+| `frontend/src/App.jsx`, `router.jsx` | TASK-01 | Route бүртгэл, static `/quiz/result`-ыг `/quiz/:unitId`-ээс өмнө тодорхойлно |
+| `frontend/src/auth/AuthContext.jsx`, `ProtectedRoute.jsx` | TASK-01 | Role guard, `state-login-required`/`state-forbidden` |
+| `frontend/src/components/TopHUD.jsx` | TASK-01 | HUD-ыг бусад хуудас дахин ашиглана |
+| `frontend/src/mock/db.js`, `MockStoreContext.jsx` | TASK-03 | Seed + CRUD action. Өөрчлөх бол issue дээр тохирно |
+| `frontend/src/utils/validators.js` | TASK-04 | Нэр, тайлбар, файл төрөл/хэмжээний validation |
+| `frontend/src/components/states/*`, `Toast`, `ConfirmDialog` | TASK-06 | Нийтлэг төлөвүүд |
+| `frontend/src/styles/*` (token, responsive layout) | TASK-06 | [design.md](docs/design.md)-ийн token |
+| `e2e/*`, `playwright.config.js` | TASK-06 (`crud.spec.js` → TASK-04, `role.spec.js` → TASK-01) | Scenario бүр нэг эзэнтэй |
+| `docker-compose.yml`, `backend/Dockerfile` (Lab 6) | TASK-06 | |
+| `backend/src/middleware/auth.js` (Lab 4) | TASK-01 | Бусад модуль өөрийн endpoint-д холбож тестлэнэ |
+
+Дүрэм: хамтын файлыг өөрчлөхөөс өмнө эзэнтэй issue дээр хүрээг тохирч, тусдаа branch/MR ашиглана. Дахин ашигласан код нь хэрэглэгчийн шинэ ажил гэж тооцогдохгүй.
+
+## 4. Lab 3 — ажлын бүртгэл
+
+Нийтлэг: Үе шат **Lab 3** · Хугацаа: Lab 3-ын товлосон хугацаа · Issue/MR: ажлыг эхлэхэд бодит холбоосоор бөглөнө · Commit: дуусахад өөрийн бодит commit hash-аар бөглөнө · Нотолгоо: screenshot/video болон `test:ci` үр дүнгийн холбоос · Төлөв: planned. Branch нэр: `feature/<taskId>-<сэдэв>`. Commit: `<taskId>: <өөрчлөлт>`; гишүүн бүр дор хаяж 2 commit.
+
+### TASK-01-L3 · А. Төгөлдөр · Reviewer: TASK-02
+- **Хэсэг:** Login, Dashboard, AuthContext, ProtectedRoute, router, mock login/role
+- **Routes:** `/login`, `/dashboard`
+- **Файл:** `frontend/src/features/auth/LoginScreen.jsx`, `frontend/src/features/dashboard/VirtualRoomDashboard.jsx`, `frontend/src/auth/*`, `frontend/src/router.jsx`, `frontend/src/components/TopHUD.jsx`
+- **Тест:** `frontend/src/tests/Login.test.jsx`, `ProtectedRoute.test.jsx`, `e2e/role.spec.js` (tag `role`)
+- **Хамаарал:** TASK-03-ийн mock store (хэрэглэгчийн өгөгдөл), TASK-06-ийн state component
+- **Хүлээн авах шалгуур:**
+  1. Зөв нэр/нууц үгээр нэвтэрч `/dashboard` нээгдэнэ; reload хийхэд session хэвээр.
+  2. Хоосон/буруу оролтод `login-name-error`, `login-password-error`, `login-error` харагдана.
+  3. Student-д `room-computer`, Teacher-д `room-board` харагдана; Ор → гарах modal → `/login`.
+  4. `role` scenario бүх алхамдаа амжилттай.
+
+### TASK-02-L3 · Мөнхбаяр · Reviewer: TASK-03
+- **Хэсэг:** Practice course grid, Quiz page (3 төрлийн асуулт, inline feedback)
+- **Routes:** `/practice`, `/quiz/:unitId`
+- **Файл:** `frontend/src/features/practice/PracticeCourses.jsx`, `frontend/src/features/quiz/QuizQuestion.jsx` (+ `MultipleChoice`, `TrueFalse`, `CodeOutput` дэд component)
+- **Тест:** `frontend/src/tests/PracticeCourses.test.jsx`, `QuizQuestion.test.jsx`
+- **Хамаарал:** TASK-03 mock store (асуулт, `submitAttempt` action)
+- **Хүлээн авах шалгуур:**
+  1. `/practice` дээр хичээл, биелэлт %, `Үргэлжлүүлэх` харагдана; хоосон, алдааны төлөвтэй.
+  2. `/quiz/UN04` дээр 3 төрлийн асуулт нэг page-д ажиллаж, `Шалгах` → ногоон/улаан feedback → `Дараагийн асуулт`.
+  3. Сүүлийн асуултын дараа `Дуусгах` → `/quiz/result`; буруу unitId → `state-not-found`.
+
+### TASK-03-L3 · Тэмүүлэн (Temka) · Reviewer: TASK-04
+- **Хэсэг:** Хэвтээ суралцах зам, Quiz result, mock store (Context + localStorage)
+- **Routes:** `/practice/:courseId`, `/quiz/result`
+- **Файл:** `frontend/src/features/path/HorizontalLearningPath.jsx`, `frontend/src/features/quiz/QuizResult.jsx`, `frontend/src/mock/db.js`, `frontend/src/mock/MockStoreContext.jsx`
+- **Тест:** `frontend/src/tests/HorizontalPath.test.jsx`, `QuizResult.test.jsx`, `mockStore.test.js`
+- **Хамаарал:** TASK-02 (quiz submit), TASK-01 (session). Mock store API-г Lab 3-ын эхний өдөр бусдад зарлана.
+- **Хүлээн авах шалгуур:**
+  1. Зангилаа 4 төлөвөөр (`data-status`) харагдаж, `LOCKED` нь шилжихгүй.
+  2. Зам нь өөрийн хайрцагт хэвтээ scroll хийж, 375px-д body scroll үүсэхгүй.
+  3. `/quiz/result` дээр score %, зөв хариулт, +XP, ахиц; attempt байхгүй үед хоосон төлөв.
+  4. Mock store seed-ээр сэргэж, reload-д төлөв хадгалагдана.
+
+### TASK-04-L3 · Д. Баттөмөр · Reviewer: TASK-05
+- **Хэсэг:** Багшийн өрөө (статистик, хичээл, суралцагч), Course CRUD, материал upload (frontend validation), лекц үүсгэх маягт
+- **Routes:** `/teacher`, `/teacher/courses/new`
+- **Файл:** `frontend/src/features/teacher/TeacherRoom.jsx`, `TeacherCourseForm.jsx`, `CourseForm.jsx`, `frontend/src/utils/validators.js`
+- **Тест:** `frontend/src/tests/TeacherRoom.test.jsx`, `CourseForm.test.jsx`, `validators.test.js`, `e2e/crud.spec.js` (tag `crud`)
+- **Хамаарал:** TASK-03 mock store, TASK-06 `ConfirmDialog`/`Toast`, TASK-01 role guard
+- **Хүлээн авах шалгуур:**
+  1. `crud-course` scenario: нэмэх → жагсаалтад харах → засах → устгах, reload-ын дараа хэвээр.
+  2. Хоосон нэр, богино тайлбар, буруу файл төрөл/хэмжээнд талбарын алдаа гарч record үүсэхгүй.
+  3. Статистик карт, bar chart, суралцагчийн хүснэгт (хайлттай) харагдана.
+  4. Student-д `state-forbidden`.
+### TASK-05-L3 · Хүслэн О. · Reviewer: TASK-06
+- **Хэсэг:** Хичээлийн сан (хайлт, шүүлт), сэдвийн жагсаалт
+- **Routes:** `/explore`, `/topics/:courseId`
+- **Файл:** `frontend/src/features/explore/ExploreCourses.jsx`, `frontend/src/features/topics/UnitTopics.jsx`
+- **Тест:** `frontend/src/tests/ExploreSearch.test.jsx`, `UnitTopics.test.jsx`
+- **Хамаарал:** TASK-03 mock store, TASK-01 role guard, TASK-04 Lecture create (өгөгдөл)
+- **Хүлээн авах шалгуур:**
+  1. "React" гэж хайхад зөвхөн холбогдох хичээл үлдэж, олдохгүй бол хоосон төлөв болон цэвэрлэх товч харагдана.
+  2. Хайлтын утга, ангиллын шүүлтүүр URL-ийн `?search=&category=` параметртэй sync хийнэ.
+  3. Сэдэв сонгоход тухайн сэдвийн лекцийн жагсаалт зөв харагдана.
+
+### TASK-06-L3 · Цогжавхлан Б. · Reviewer: TASK-01
+- **Хэсэг:** Чансаа, лекцийн дэлгэрэнгүй (Render demo, Knowledge Check, багшийн засах/устгах), нийтлэг UI төлөв component, responsive layout, validation/smoke/responsive Playwright scenario
+- **Routes:** `/leaderboard`, `/explore/lecture/:id`
+- **Файл:**
+  - `frontend/src/features/leaderboard/Leaderboard.jsx`
+  - `frontend/src/features/lecture/ExploreLectureDetail.jsx`
+  - `frontend/src/components/states/*`
+  - `frontend/src/components/Toast.jsx`
+  - `frontend/src/components/ConfirmDialog.jsx`
+  - `frontend/src/styles/*`
+  - `e2e/validation.spec.js`
+  - `e2e/smoke.spec.js`
+  - `e2e/responsive.spec.js`
+  - `playwright.config.js`
+- **Тест:**
+  - `frontend/src/tests/Leaderboard.test.jsx`
+  - `frontend/src/tests/LectureDetail.test.jsx`
+  - `frontend/src/tests/UIStates.test.jsx`
+  - Дээрх E2E тестүүд (`validation`, `smoke`, `responsive` tag)
+- **Хамаарал:** TASK-03 mock store, TASK-01 role guard, TASK-04 Lecture create (лекцийн өгөгдөл), бусад гишүүдийн testId-ууд (`team-spec.json`).
+- **Хүлээн авах шалгуур:**
+  1. Podium, "Энэ долоо хоног"/"Нийт" таб, "Чи" мөр тодорч харагдана. Teacher role-д чансааны хуудас харагдахгүй.
+  2. Лекцийн дэлгэрэнгүйд `Render хийх` demo анимейшн ажиллаж, Knowledge Check амжилттай дуусахад тухайн сэдэв `DONE` төлөвт шилжинэ.
+  3. `lecture-edit-btn` болон `lecture-delete-btn` зөвхөн Teacher role-д харагдана. Лекц засах үед validation хийгдэж, лекц устгахын өмнө баталгаажуулах dialog гарна.
+  4. `validation` scenario нэвтрэх, хичээл нэмэх, файл upload-тай холбоотой алдаануудыг хамруулж амжилттай ажиллана.
+  5. 12 route бүр 375px өргөнтэй дэлгэцэд хэвтээ overflow-гүй байна. `smoke` scenario алдаагүй ажиллана.
+  6. Хуудас бүрийн `state-*` component нэг бүтэцтэй, loading, empty, error төлөвүүд ижил загвараар харагдана.
+  7. Лекцийн дэлгэрэнгүй хуудасны өгөгдөл mock store-той холбогдож, байхгүй `id`-д алдааны төлөв харуулна.
