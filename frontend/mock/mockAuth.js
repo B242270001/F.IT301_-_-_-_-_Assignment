@@ -45,7 +45,15 @@ const mockAuth = {
   /** Одоо нэвтэрсэн хэрэглэгчийг авах */
   getCurrentUser() {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
+    if (!raw) return null;
+
+    try {
+      return JSON.parse(raw);
+    } catch {
+      // Ignore stale or corrupted session data so the app can still open.
+      sessionStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
   },
 
   /** Нэвтэрсэн эсэх */
