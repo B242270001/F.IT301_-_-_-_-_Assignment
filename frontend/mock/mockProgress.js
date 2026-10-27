@@ -65,6 +65,27 @@ const mockProgress = {
     });
   },
 
+  async completeUnit(userId, unitId, score) {
+    const progress = await this._seedUnits();
+    const unitsRes = await fetch('/mock/units.json');
+    const units = (await unitsRes.json()).units;
+    const unit = units.find((item) => item.id === unitId);
+    if (!unit) return;
+
+    const courseUnits = units.filter((item) => item.courseId === unit.courseId).sort((a, b) => a.order - b.order);
+    const existing = progress.find((item) => item.userId === userId && item.unitId === unitId);
+    if (existing) Object.assign(existing, { status: 'COMPLETED', score });
+    else progress.push({ userId, unitId, status: 'COMPLETED', score });
+
+    const nextUnit = courseUnits.find((item) => item.order > unit.order);
+    if (nextUnit) {
+      const nextProgress = progress.find((item) => item.userId === userId && item.unitId === nextUnit.id);
+      if (nextProgress?.status === 'LOCKED') nextProgress.status = 'CURRENT';
+      else if (!nextProgress) progress.push({ userId, unitId: nextUnit.id, status: 'CURRENT', score: 0 });
+    }
+    localStorage.setItem(UNIT_PROGRESS_KEY, JSON.stringify(progress));
+  },
+
   /** Topic progress авах */
   async getTopicProgress(userId) {
     const progress = await this._seedTopics();

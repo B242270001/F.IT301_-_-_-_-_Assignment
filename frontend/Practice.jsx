@@ -135,9 +135,10 @@ export default function Practice({ user }) {
   if (units.length === 0) {
     return (
       <main className="practice-page" data-testid="page-learning-path">
-        <header className="practice-topbar">
-          <Link className="practice-back-link" to="/practice">← Хичээл сонгох</Link>
-          <span className="practice-brand">StudyQuest</span>
+      <header className="practice-topbar">
+        <Link className="practice-brand" to="/dashboard"><span className="practice-brand-mark">S</span>StudyQuest</Link>
+        <nav className="practice-nav" aria-label="Үндсэн цэс"><Link to="/dashboard">Миний өрөө</Link><Link className="is-active" to="/practice">Дадлага</Link><Link to="/leaderboard">Чансаа</Link></nav>
+        <Link className="practice-back-link" to="/practice">← Хичээл сонгох</Link>
         </header>
         <section className="practice-state">
           <span className="practice-state-icon" aria-hidden="true">📚</span>
@@ -151,9 +152,9 @@ export default function Practice({ user }) {
   return (
     <main className="practice-page" data-testid="page-learning-path">
       <header className="practice-topbar">
+        <Link className="practice-brand" to="/dashboard"><span className="practice-brand-mark">S</span>StudyQuest</Link>
+        <nav className="practice-nav" aria-label="Үндсэн цэс"><Link to="/dashboard">Миний өрөө</Link><Link className="is-active" to="/practice">Дадлага</Link><Link to="/leaderboard">Чансаа</Link></nav>
         <Link className="practice-back-link" to="/practice">← Хичээл сонгох</Link>
-        <Link className="practice-brand" to="/dashboard" aria-label="StudyQuest өрөө">StudyQuest</Link>
-        <span className="practice-user">{user?.displayName || "Оюутан"}</span>
       </header>
 
       <section className="practice-heading">

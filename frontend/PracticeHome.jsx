@@ -28,8 +28,10 @@ export default function PracticeHome({ user }) {
   return (
     <main className="practice-page practice-home" data-testid="page-practice">
       <header className="practice-topbar">
-        <Link className="practice-back-link" to="/dashboard">← Өрөө рүү</Link>
-        <Link className="practice-brand" to="/dashboard">StudyQuest</Link>
+        <Link className="practice-brand" to="/dashboard"><span className="practice-brand-mark">S</span>StudyQuest</Link>
+        <nav className="practice-nav" aria-label="Үндсэн цэс">
+          <Link to="/dashboard">Миний өрөө</Link><Link className="is-active" to="/practice">Дадлага</Link><Link to="/leaderboard">Чансаа</Link>
+        </nav>
         <span className="practice-user">{user?.displayName || "Оюутан"}</span>
       </header>
       <section className="practice-heading">

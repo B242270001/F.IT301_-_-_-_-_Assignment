@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard";
 import Leaderboard from "./Leaderboard";
 import GlobalUIStates from "./GlobalUIStates";
 import QuizResult from "./QuizResult";
+import QuizQuestion from "./QuizQuestion";
 import TeacherRoom from "./TeacherRoom";
 import TeacherCourseForm from "./TeacherCourseForm";
 
@@ -109,6 +110,18 @@ export default function App() {
         />
 
         {/* TASK-04: D. Battumur - Quiz result */}
+        <Route
+          path="/quiz/:unitId"
+          element={
+            isLoggedIn && isStudent ? (
+              <QuizQuestion user={user} />
+            ) : isLoggedIn ? (
+              <Navigate to={afterLoginRedirect} replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
         <Route
           path="/quiz/result"
           element={
