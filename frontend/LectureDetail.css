@@ -1,0 +1,1142 @@
+/* LectureDetail.css — Figma: "Судлах · React лекцийн дэлгэрэнгүй" (9:32530) */
+#root:has(.lec-page) {
+  width: auto;
+  max-width: none;
+  border: 0;
+  text-align: left;
+}
+
+.lec-page {
+  min-height: 100vh;
+  background: #f7f6fc;
+  color: #28233d;
+  line-height: 1.45;
+  letter-spacing: normal;
+  color-scheme: light;
+}
+
+.lec-workspace,
+.lec-workspace *,
+.lec-state,
+.lec-state * {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.lec-workspace img,
+.lec-state img {
+  display: block;
+  flex-shrink: 0;
+}
+
+.lec-workspace a,
+.lec-state a {
+  text-decoration: none;
+}
+
+.lec-workspace :focus-visible,
+.lec-state :focus-visible {
+  outline: 2px solid #7c5cfc;
+  outline-offset: 2px;
+}
+
+.lec-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Layout */
+.lec-workspace {
+  display: grid;
+  grid-template-columns: 258px minmax(0, 1fr);
+  gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 40px;
+}
+
+/* Товчнууд */
+.lec-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #eae6f3;
+  border-radius: 14px;
+  background: #fff;
+  color: #28233d;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.lec-btn:hover {
+  border-color: #7c5cfc;
+  background: #eee9ff;
+}
+
+.lec-btn:active {
+  border-color: #eae6f3;
+  background: #ded4ff;
+}
+
+.lec-btn-danger:hover {
+  border-color: #cb6375;
+  background: #fff0f2;
+  color: #cb6375;
+}
+
+.lec-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 10px 24px 14px;
+  border: 0;
+  border-radius: 16px;
+  background: #7c5cfc;
+  box-shadow: inset 0 -4px 0 #5038b2;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.lec-primary:enabled:hover {
+  background: #8c70ff;
+}
+
+.lec-primary:enabled:active {
+  background: #5038b2;
+  box-shadow: none;
+}
+
+.lec-primary:disabled {
+  background: #eae6f3;
+  box-shadow: none;
+  color: #817b94;
+  cursor: not-allowed;
+}
+
+.lec-primary img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Drawer-ийн товч, давхарга зөвхөн таблет/гар утсанд (доорх media query) */
+.lec-drawer-toggle,
+.lec-drawer-close,
+.lec-drawer-backdrop {
+  display: none;
+}
+
+/* Сэдвийн цэс */
+.lec-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #eae6f3;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.lec-topics-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lec-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #7c5cfc;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lec-back:hover {
+  text-decoration: underline;
+}
+
+.lec-back img {
+  width: 17px;
+  height: 17px;
+}
+
+.lec-divider {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: #eae6f3;
+}
+
+.lec-course {
+  color: #28233d;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: normal;
+}
+
+.lec-meta {
+  color: #817b94;
+  font-size: 12px;
+}
+
+.lec-progress {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 100px;
+  background: #eae6f3;
+}
+
+.lec-progress span {
+  display: block;
+  height: 100%;
+  border-radius: 100px;
+  background: #7c5cfc;
+  transition: width 0.3s;
+}
+
+.lec-progress-text {
+  color: #7c5cfc;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lec-topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.lec-topic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  color: #28233d;
+  font-size: 13px;
+  transition: background-color 0.15s;
+}
+
+.lec-topic img {
+  width: 18px;
+  height: 18px;
+}
+
+a.lec-topic:hover {
+  background: #f7f6fc;
+}
+
+.lec-topic.is-current,
+a.lec-topic.is-current:hover {
+  background: #eee9ff;
+  color: #7c5cfc;
+  font-weight: 600;
+}
+
+.lec-topic.is-disabled {
+  color: #817b94;
+  opacity: 0.55;
+}
+
+.lec-topic-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.lec-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #fff2da;
+  color: #28233d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lec-hint img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Лекцийн нийтлэл */
+.lec-article {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #eae6f3;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.lec-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+}
+
+.lec-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.lec-eyebrow {
+  color: #7c5cfc;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.lec-heading h1 {
+  color: #28233d;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: normal;
+  overflow-wrap: anywhere;
+}
+
+.lec-header-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lec-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  background: #eee9ff;
+  color: #7c5cfc;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lec-status img {
+  width: 15px;
+  height: 15px;
+}
+
+.lec-status.is-done {
+  background: #e7f6ef;
+  color: #278467;
+}
+
+.lec-notice {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #e7f6ef;
+  color: #278467;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lec-summary {
+  color: #817b94;
+  font-size: 14px;
+}
+
+.lec-content {
+  color: #28233d;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* Код ба диаграм */
+.lec-code-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 530fr) minmax(0, 462fr);
+  gap: 20px;
+}
+
+.lec-code-demo.is-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.lec-code {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  min-height: 298px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #29253e;
+}
+
+.lec-code-demo.is-single .lec-code {
+  min-height: 0;
+}
+
+.lec-code-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b8abe2;
+  font-size: 11px;
+}
+
+.lec-filename {
+  margin-right: auto;
+}
+
+.lec-copy {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: -6px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lec-copy:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lec-copy img {
+  width: 16px;
+  height: 16px;
+}
+
+.lec-code pre {
+  overflow-x: auto;
+  color: #eee8ff;
+  font: 13px/1.6 "Roboto Mono", ui-monospace, Menlo, monospace;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.lec-code pre * {
+  font: inherit;
+}
+
+/* index.css-ийн inline `code` загварыг цуцална */
+.lec-code code {
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+}
+
+.lec-kw {
+  color: #bb9bff;
+}
+
+.lec-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.lec-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 150px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #f7f6fc;
+}
+
+.lec-tree-label {
+  color: #817b94;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.lec-node {
+  display: grid;
+  place-items: center;
+  width: 102px;
+  height: 30px;
+  border: 1px solid #cbbffa;
+  border-radius: 8px;
+  background: #fff;
+  color: #5038b2;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.lec-node-root {
+  width: 98px;
+  height: 32px;
+  border: 0;
+  border-radius: 9px;
+  background: #7c5cfc;
+  color: #fff;
+  font-size: 13px;
+}
+
+.lec-branches {
+  width: 202px;
+  height: 20px;
+  transition: opacity 0.3s;
+}
+
+.lec-node-children {
+  display: flex;
+  gap: 12px;
+}
+
+.lec-demo .is-pending {
+  opacity: 0.25;
+  transform: scale(0.94);
+}
+
+.lec-browser {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 134px;
+  overflow: hidden;
+  border: 1px solid #eae6f3;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.lec-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 12px;
+  background: #f7f6fc;
+  color: #817b94;
+  font-size: 10px;
+}
+
+.lec-browser-bar span {
+  width: 6px;
+  height: 6px;
+  border-radius: 4px;
+  background: #deb9cb;
+}
+
+.lec-browser-bar span:nth-child(2) {
+  background: #e5d295;
+}
+
+.lec-browser-bar span:nth-child(3) {
+  background: #bfd6be;
+}
+
+.lec-browser-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px;
+  transition: opacity 0.3s;
+}
+
+.lec-demo .lec-browser-body.is-pending {
+  opacity: 0;
+  transform: none;
+}
+
+.lec-preview-title {
+  color: #28233d;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.lec-preview-text {
+  color: #817b94;
+  font-size: 13px;
+}
+
+/* Дүрслэх алхам */
+.lec-render-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lec-reveal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #eee9ff;
+  color: #7c5cfc;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.lec-reveal:hover {
+  background: #ded4ff;
+}
+
+.lec-reveal img {
+  width: 16px;
+  height: 16px;
+}
+
+.lec-chevron {
+  transition: transform 0.2s;
+}
+
+.lec-reveal[aria-expanded="false"] .lec-chevron {
+  transform: rotate(180deg);
+}
+
+.lec-render-state {
+  color: #817b94;
+  font-size: 11px;
+}
+
+.lec-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #f7f6fc;
+  list-style: none;
+}
+
+.lec-step {
+  display: flex;
+  gap: 10px;
+  transition: opacity 0.3s;
+}
+
+.lec-step.is-pending {
+  opacity: 0.4;
+}
+
+.lec-step > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.lec-step-num {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: #7c5cfc;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.lec-step-title {
+  color: #28233d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lec-step-text {
+  color: #817b94;
+  font-size: 12px;
+}
+
+/* Knowledge Check */
+.lec-kc {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lec-kc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lec-kc-head h2 {
+  color: #28233d;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: normal;
+}
+
+.lec-kc-count {
+  padding: 5px 10px;
+  border-radius: 100px;
+  background: #eee9ff;
+  color: #7c5cfc;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lec-kc-question {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.lec-kc-question legend {
+  margin-bottom: 12px;
+  padding: 0;
+  color: #28233d;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lec-answers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lec-answer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 13px;
+  border: 1px solid #eae6f3;
+  border-radius: 16px;
+  background: #fff;
+  color: #28233d;
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.lec-answer input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lec-answer:has(input:focus-visible) {
+  outline: 2px solid #7c5cfc;
+  outline-offset: 2px;
+}
+
+.lec-answer:has(input:enabled):hover {
+  border-color: #7c5cfc;
+  background: #eee9ff;
+  color: #7c5cfc;
+}
+
+.lec-answer:has(input:disabled) {
+  cursor: default;
+}
+
+.lec-answer.is-selected,
+.lec-answer.is-correct,
+.lec-answer.is-wrong {
+  padding: 12px;
+  border-width: 2px;
+  font-weight: 700;
+}
+
+.lec-answer.is-selected,
+.lec-answer.is-selected:has(input:enabled):hover {
+  border-color: #7c5cfc;
+  background: #eee9ff;
+  color: #7c5cfc;
+}
+
+.lec-answer.is-correct,
+.lec-answer.is-correct:has(input:enabled):hover {
+  border-color: #278467;
+  background: #e7f6ef;
+  color: #278467;
+}
+
+.lec-answer.is-wrong,
+.lec-answer.is-wrong:has(input:enabled):hover {
+  border-color: #cb6375;
+  background: #fff0f2;
+  color: #cb6375;
+}
+
+.lec-key {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #eae6f3;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.lec-answer:has(input:enabled):hover .lec-key,
+.lec-answer.is-selected .lec-key {
+  border-color: #7c5cfc;
+}
+
+.lec-answer.is-correct .lec-key {
+  border-color: #278467;
+}
+
+.lec-answer.is-wrong .lec-key {
+  border-color: #cb6375;
+}
+
+.lec-answer-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.lec-answer img {
+  width: 20px;
+  height: 20px;
+}
+
+.lec-kc-feedback {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lec-kc-feedback img {
+  width: 20px;
+  height: 20px;
+}
+
+.lec-kc-feedback.is-correct {
+  background: #e7f6ef;
+  color: #278467;
+}
+
+.lec-kc-feedback.is-wrong {
+  background: #fff0f2;
+  color: #cb6375;
+}
+
+/* Сэдэв дуусгах */
+.lec-complete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lec-complete-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.lec-next {
+  color: #28233d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lec-next a {
+  color: #7c5cfc;
+}
+
+.lec-next a:hover {
+  text-decoration: underline;
+}
+
+.lec-complete-hint {
+  color: #817b94;
+  font-size: 12px;
+}
+
+/* Багшийн засах маягт — Figma: "Хичээл засах · Бөглөсөн маягт" */
+.lec-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lec-form-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.lec-form-head h2 {
+  color: #28233d;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: normal;
+}
+
+.lec-badge {
+  padding: 5px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lec-badge.is-error {
+  background: #fff0f2;
+  color: #cb6375;
+}
+
+.lec-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lec-field label {
+  color: #28233d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lec-field input,
+.lec-field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 14px;
+  border: 1px solid #eae6f3;
+  border-radius: 14px;
+  background: #fff;
+  color: #28233d;
+  font-size: 14px;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.lec-field textarea {
+  min-height: 108px;
+}
+
+.lec-field input:focus,
+.lec-field textarea:focus {
+  border-color: #7c5cfc;
+  outline: none;
+  box-shadow: 0 0 0 3px #eee9ff;
+}
+
+.lec-field .is-error,
+.lec-field .is-error:focus {
+  border-color: #cb6375;
+}
+
+.lec-field .is-error:focus {
+  box-shadow: 0 0 0 3px #fff0f2;
+}
+
+.lec-field-error {
+  color: #cb6375;
+  font-size: 12px;
+}
+
+.lec-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lec-form-actions .lec-btn {
+  min-width: 136px;
+  min-height: 52px;
+  border-radius: 16px;
+  font-size: 15px;
+}
+
+.lec-form-actions .lec-primary {
+  min-width: 170px;
+  font-size: 15px;
+}
+
+/* Нийтлэг төлөв */
+.lec-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 120px 24px;
+  color: #817b94;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Код + диаграм нэг баганад */
+@media (max-width: 1100px) {
+  .lec-code-demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lec-code {
+    min-height: 0;
+  }
+}
+
+/* Таблет ба гар утас: сэдвийн цэс drawer болно */
+@media (max-width: 1023px) {
+  .lec-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .lec-drawer-toggle {
+    display: inline-flex;
+    justify-self: start;
+  }
+
+  .lec-topics {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 60;
+    width: min(320px, 86vw);
+    overflow-y: auto;
+    border-radius: 0 24px 24px 0;
+    box-shadow: 0 8px 28px rgba(69, 48, 120, 0.18);
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform 0.25s, visibility 0.25s;
+  }
+
+  .lec-topics.is-open {
+    visibility: visible;
+    transform: none;
+  }
+
+  .lec-drawer-close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: -10px -10px -10px 0;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: #817b94;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .lec-drawer-close:hover {
+    background: #f7f6fc;
+  }
+
+  .lec-drawer-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(40, 35, 61, 0.45);
+  }
+}
+
+@media (max-width: 767px) {
+  .lec-steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .lec-answers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .lec-workspace {
+    padding: 16px;
+  }
+
+  .lec-article {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .lec-heading h1 {
+    font-size: 24px;
+  }
+
+  .lec-header-side,
+  .lec-header-side .lec-btn,
+  .lec-primary,
+  .lec-form-actions .lec-btn,
+  .lec-form-actions .lec-primary {
+    flex: 1 1 100%;
+  }
+
+  .lec-reveal {
+    min-height: 44px;
+  }
+
+  .lec-copy {
+    width: 44px;
+    height: 44px;
+    margin: -14px;
+  }
+
+  .lec-code,
+  .lec-steps {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lec-page *,
+  .confirm-backdrop * {
+    transition: none !important;
+  }
+}

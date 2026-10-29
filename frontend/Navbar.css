@@ -1,0 +1,175 @@
+/* Navbar.css - Dashboard, Leaderboard-ийн нийтлэг топ цэс */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #271f47;
+  padding: 10px 36px;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #362b5e;
+  flex-shrink: 0;
+  /* Хуудас бүрийн өөр өөр үндсэн фонтоос үл хамааран адилхан харагдана */
+  font: 18px/145% sans-serif;
+  letter-spacing: 0.18px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Товчлуурууд хоорондын зайг ойртуулав (хүссэнээрээ багасгаж/ихэсгэж болно) */
+}
+
+.brand-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.brand-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.room-btn {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px;
+  gap: 6px;
+  border-radius: 100px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: normal; /* <a> нь <button> шиг харагдана */
+  letter-spacing: normal;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.room-btn.active {
+  background-color: #312759;
+  border: 1px solid #7c5cfc;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(124, 92, 252, 0.35);
+}
+
+.room-btn.active span {
+  color: #ffffff;
+}
+
+.room-btn.active:hover {
+  background-color: #3d316e;
+}
+
+/* Идэвхгүй товчлуурууд - Бүрхэг, дарагдаагүй мэт харагдана */
+.room-btn.inactive {
+  background-color: transparent;
+  border: 1px solid transparent;
+  opacity: 0.55;
+}
+
+.room-btn.inactive span {
+  color: #a799cc;
+}
+
+.room-btn.inactive:hover {
+  opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.room-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 100px;
+}
+
+.nav-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-item img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.stat-text {
+  color: #e3d8ff;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.user-avatar-btn {
+  background-color: #7c5cfc;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(124, 92, 252, 0.4);
+}
+
+.user-avatar-btn span {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.username {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Жижиг дэлгэц: цэс доод мөрөнд буух ба статистикийг нууна */
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding: 10px 24px;
+  }
+
+  .nav-menu {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .stat-item,
+  .username {
+    display: none;
+  }
+
+  .nav-menu {
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .room-btn {
+    padding: 6px 10px;
+  }
+}

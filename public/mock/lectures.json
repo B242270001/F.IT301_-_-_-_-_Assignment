@@ -81,7 +81,7 @@
       "title": "React Components",
       "summary": "React компонентийн тухай ойлголт ба функц компонент.",
       "content": "React компонент нь UI-ийн дахин ашиглах боломжтой хэсэг юм.\n\nФункц компонент:\n- JavaScript функц\n- JSX буцаана\n- Props хүлээн авна\n\nКомпонент нэрлэх дүрэм:\n- PascalCase ашиглана (VD: MyComponent)\n- Файлын нэр = Компонентийн нэр",
-      "codeSample": "function Greeting({ name }) {\n  return <h1>Сайн байна уу, {name}!</h1>;\n}\n\nexport default function App() {\n  return <Greeting name=\"Тэмүүлэн\" />;\n}",
+      "codeSample": "function Header() {\n  return <h1>Миний хичээл</h1>;\n}\nfunction Content() {\n  return <p>React сурцгаая!</p>;\n}\nfunction App() {\n  return <><Header /><Content /></>;\n}",
       "demoType": "REACT_RENDER",
       "materials": [],
       "knowledgeCheck": [
