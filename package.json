@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "start:grader": "vite build && vite preview --host --port 4173 --strictPort",
     "e2e": "playwright test",
     "test:ci": "vitest run"
   },
