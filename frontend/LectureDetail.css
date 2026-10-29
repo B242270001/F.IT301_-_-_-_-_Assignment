@@ -16,27 +16,22 @@
 }
 
 .lec-workspace,
-.lec-workspace *,
-.lec-state,
-.lec-state * {
+.lec-workspace * {
   box-sizing: border-box;
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
 }
 
-.lec-workspace img,
-.lec-state img {
+.lec-workspace img {
   display: block;
   flex-shrink: 0;
 }
 
-.lec-workspace a,
-.lec-state a {
+.lec-workspace a {
   text-decoration: none;
 }
 
-.lec-workspace :focus-visible,
-.lec-state :focus-visible {
+.lec-workspace :focus-visible {
   outline: 2px solid #7c5cfc;
   outline-offset: 2px;
 }
@@ -352,15 +347,6 @@ a.lec-topic.is-current:hover {
 .lec-status.is-done {
   background: #e7f6ef;
   color: #278467;
-}
-
-.lec-notice {
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: #e7f6ef;
-  color: #278467;
-  font-size: 13px;
-  font-weight: 600;
 }
 
 .lec-summary {
@@ -999,18 +985,6 @@ a.lec-topic.is-current:hover {
 .lec-form-actions .lec-primary {
   min-width: 170px;
   font-size: 15px;
-}
-
-/* Нийтлэг төлөв */
-.lec-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 120px 24px;
-  color: #817b94;
-  font-size: 14px;
-  text-align: center;
 }
 
 /* Код + диаграм нэг баганад */

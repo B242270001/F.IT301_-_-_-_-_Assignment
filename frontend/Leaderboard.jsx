@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import PageState from "./PageState";
 import graduationCap from "./assets/leaderboard/graduation-cap.svg";
 import crown from "./assets/leaderboard/crown.svg";
 import trendingUp from "./assets/leaderboard/trending-up.svg";
@@ -11,7 +12,6 @@ import saruul from "./assets/leaderboard/portrait-saruul.svg";
 import bilguun from "./assets/leaderboard/portrait-bilguun.svg";
 import "./Leaderboard.css";
 
-const currentUser = { id: "U05" };
 const portraits = { U01: anujin, U02: saruul, U03: bilguun };
 const avatarColors = ["#f7eadf", "#eee9ff", "#e3f1ee", "#e7edfa"];
 const tabs = [
@@ -39,9 +39,9 @@ function changeText(change) {
   return "Өнгөрсөн долоо хоногийн байраа хадгаллаа.";
 }
 
-function Avatar({ student }) {
+function Avatar({ student, isMe }) {
   // Өөрийн аватар нь Navbar-ынхтай адилхан (нил ягаан, цагаан үсэг)
-  if (student.id === currentUser.id) {
+  if (isMe) {
     return <span className="lb-avatar lb-avatar-me">{student.name.split(" ").pop()[0]}</span>;
   }
   return (
@@ -52,6 +52,25 @@ function Avatar({ student }) {
 }
 
 export default function Leaderboard({ user }) {
+  // Багш чансаанд орохгүй тул хуудсыг харуулахгүй
+  if (user?.role === "TEACHER") {
+    return (
+      <div className="lb-page" data-testid="page-leaderboard">
+        <Navbar user={user} />
+        <PageState
+          type="forbidden"
+          message="Чансаа зөвхөн оюутнуудад харагдана."
+          actionLabel="Багшийн өрөө рүү"
+          actionTo="/teacher"
+        />
+      </div>
+    );
+  }
+  return <Ranking user={user} />;
+}
+
+function Ranking({ user }) {
+  const meId = user?.id;
   const [period, setPeriod] = useState("weekly");
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
@@ -76,7 +95,7 @@ export default function Leaderboard({ user }) {
   };
 
   const rows = data ? data[period] : [];
-  const findMe = (list) => list.find((row) => row.id === currentUser.id);
+  const findMe = (list) => list.find((row) => row.id === meId);
   const me = findMe(rows);
   const weeklyMe = data && findMe(data.weekly);
   const totalMe = data && findMe(data.allTime);
@@ -112,21 +131,19 @@ export default function Leaderboard({ user }) {
             </div>
 
             {error ? (
-              <div className="lb-state" role="alert">
-                <p>Чансааг ачаалж чадсангүй.</p>
-                <button className="lb-retry" onClick={retry}>Дахин оролдох</button>
-              </div>
+              <PageState type="error" message="Чансааг ачаалж чадсангүй." actionLabel="Дахин оролдох" onAction={retry} />
             ) : !data ? (
-              <p className="lb-state">Ачаалж байна…</p>
+              <PageState type="loading" />
             ) : rows.length === 0 ? (
-              <p className="lb-state">Чансаа бүрдээгүй байна.</p>
+              <PageState type="empty" message="Чансаа бүрдээгүй байна." />
             ) : (
               <>
                 <ol className="lb-podium" aria-label="Шилдэг гурав">
                   {rows.slice(0, 3).map((row) => (
-                    <li key={row.id} className="lb-place">
+                    <li key={row.id} className="lb-place" aria-current={row.id === meId || undefined}>
                       {row.rank === 1 && <img src={crown} alt="" />}
-                      {portraits[row.id] ? <img src={portraits[row.id]} alt="" /> : <Avatar student={row} />}
+                      {portraits[row.id] ? <img src={portraits[row.id]} alt="" /> : <Avatar student={row} isMe={row.id === meId} />}
+                      {row.id === meId && <span className="lb-me">ЧИ</span>}
                       <p className="lb-place-name">{row.name}</p>
                       <p className="lb-place-xp">{formatXp(row.xp)}</p>
                       <div className="lb-block">{row.rank}</div>
@@ -139,13 +156,13 @@ export default function Leaderboard({ user }) {
                 </div>
                 <ol className="lb-list" aria-label="Чансааны жагсаалт">
                   {rows.slice(3).map((row) => (
-                    <li key={row.id} className="lb-row" aria-current={row.id === currentUser.id || undefined}>
+                    <li key={row.id} className="lb-row" aria-current={row.id === meId || undefined}>
                       <span className="lb-rank">{row.rank}</span>
-                      <Avatar student={row} />
+                      <Avatar student={row} isMe={row.id === meId} />
                       <div className="lb-student">
                         <p className="lb-name">
                           {row.name}
-                          {row.id === currentUser.id && <span className="lb-me">ЧИ</span>}
+                          {row.id === meId && <span className="lb-me">ЧИ</span>}
                         </p>
                         <p className="lb-major">{row.major}</p>
                       </div>

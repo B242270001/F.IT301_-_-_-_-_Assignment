@@ -40,9 +40,12 @@ export default function Navbar({ user }) {
         <NavLink to="/explore" className={menuClass}>
           <span>Судлах</span>
         </NavLink>
-        <NavLink to="/leaderboard" className={menuClass}>
-          <span>Чансаа</span>
-        </NavLink>
+        {/* Багш чансаанд орохгүй */}
+        {user?.role !== "TEACHER" && (
+          <NavLink to="/leaderboard" className={menuClass}>
+            <span>Чансаа</span>
+          </NavLink>
+        )}
       </nav>
 
       <div className="nav-stats">

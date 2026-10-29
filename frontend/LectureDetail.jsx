@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import ConfirmDialog from "./ConfirmDialog";
+import PageState from "./PageState";
+import Toast from "./Toast";
 import { mockCourses, mockLectures, mockProgress, mockTopics } from "./mock";
 import arrowLeft from "./assets/lecture/arrow-left.svg";
 import circleCheck from "./assets/lecture/circle-check.svg";
@@ -166,23 +168,12 @@ export default function LectureDetail({ user }) {
     <div className="lec-page" data-testid="page-lecture">
       <Navbar user={user} />
 
-      {status === "loading" && (
-        <p className="lec-state" data-testid="state-loading" role="status">Ачаалж байна…</p>
-      )}
+      {status === "loading" && <PageState type="loading" />}
       {status === "error" && (
-        <div className="lec-state" data-testid="state-error" role="alert">
-          <p>Алдаа гарлаа</p>
-          <button type="button" className="lec-btn" onClick={() => setAttempt(attempt + 1)}>Дахин оролдох</button>
-        </div>
+        <PageState type="error" message="Лекцийг ачаалж чадсангүй." actionLabel="Дахин оролдох" onAction={() => setAttempt(attempt + 1)} />
       )}
       {status === "not-found" && (
-        <div className="lec-state" data-testid="state-not-found">
-          <p>Лекц олдсонгүй</p>
-          <Link to="/explore" className="lec-back">
-            <img src={arrowLeft} alt="" />
-            Хичээлийн сан
-          </Link>
-        </div>
+        <PageState type="not-found" message="Лекц олдсонгүй." actionLabel="Хичээлийн сан руу" actionTo="/explore" />
       )}
 
       {status === "ready" && (
@@ -314,6 +305,7 @@ function LectureArticle({ lecture, topics, isTeacher, onSave, onDelete, onComple
   const [checked, setChecked] = useState(null);
   const [kcError, setKcError] = useState("");
   const closeConfirm = useCallback(() => setConfirming(false), []);
+  const closeNotice = useCallback(() => setNotice(""), []);
 
   useEffect(() => {
     if (phase >= 3) return;
@@ -386,7 +378,7 @@ function LectureArticle({ lecture, topics, isTeacher, onSave, onDelete, onComple
         </div>
       </header>
 
-      {notice && <p className="lec-notice" role="status">{notice}</p>}
+      {notice && <Toast message={notice} onClose={closeNotice} />}
       {lecture.summary && <p className="lec-summary">{lecture.summary}</p>}
       <div className="lec-content">{lecture.content}</div>
 

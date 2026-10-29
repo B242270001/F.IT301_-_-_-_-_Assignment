@@ -1,0 +1,27 @@
+/* Toast.css — дэлгэцийн доод төвд гарах мэдэгдэл */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  z-index: 110;
+  box-sizing: border-box;
+  max-width: calc(100vw - 32px);
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(69, 48, 120, 0.12);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  transform: translateX(-50%);
+}
+
+.toast.is-success {
+  background: #e7f6ef;
+  color: #278467;
+}
+
+.toast.is-error {
+  background: #fff0f2;
+  color: #cb6375;
+}

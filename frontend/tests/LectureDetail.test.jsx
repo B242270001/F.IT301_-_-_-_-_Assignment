@@ -146,6 +146,7 @@ describe("LectureDetail", () => {
     fireEvent.change(screen.getByTestId("lecture-content-input"), { target: { value: "Шинэ агуулга" } });
     fireEvent.click(screen.getByTestId("lecture-save"));
     expect(await screen.findByRole("heading", { level: 1, name: "React компонент" })).toBeTruthy();
+    expect(screen.getByTestId("toast-success").textContent).toBe("Лекц хадгалагдлаа.");
     expect(storedLecture("L05")).toMatchObject({ title: "React компонент", content: "Шинэ агуулга" });
   });
 

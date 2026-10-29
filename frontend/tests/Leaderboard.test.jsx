@@ -16,10 +16,13 @@ function serveMock(override) {
   return fetch;
 }
 
-function renderPage() {
+const student = { id: "U05", displayName: "Б. Тэмүүлэн", role: "STUDENT" };
+const teacher = { id: "U10", displayName: "Багш Батбаяр", role: "TEACHER" };
+
+function renderPage(user = student) {
   return render(
     <MemoryRouter initialEntries={["/leaderboard"]}>
-      <Leaderboard />
+      <Leaderboard user={user} />
     </MemoryRouter>,
   );
 }
@@ -71,22 +74,53 @@ describe("Leaderboard", () => {
     expect(myRow().textContent).toContain("2,480 XP");
   });
 
-  it("shows an error and recovers on retry", async () => {
+  it("marks the logged-in student, even on the podium", async () => {
+    serveMock();
+    renderPage({ id: "U01", displayName: "Д. Анужин", role: "STUDENT" });
+
+    await screen.findByRole("list", { name: "Шилдэг гурав" });
+    expect(myRow().className).toBe("lb-place");
+    expect(myRow().textContent).toContain("Д. Анужин");
+    expect(screen.getByText("Чи тэргүүлж байна!")).toBeTruthy();
+  });
+
+  it("shows state-loading until the mock files arrive", async () => {
+    serveMock();
+    renderPage();
+
+    expect(screen.getByTestId("state-loading")).toBeTruthy();
+    await screen.findByRole("list", { name: "Шилдэг гурав" });
+    expect(screen.queryByTestId("state-loading")).toBeNull();
+  });
+
+  it("shows state-error and recovers on retry", async () => {
     let fail = true;
     serveMock(() => (fail ? { ok: false, statusText: "Not Found" } : undefined));
     renderPage();
 
-    expect((await screen.findByRole("alert")).textContent).toContain("Чансааг ачаалж чадсангүй.");
+    const error = await screen.findByTestId("state-error");
+    expect(error.getAttribute("role")).toBe("alert");
+    expect(error.textContent).toContain("Чансааг ачаалж чадсангүй.");
     fail = false;
     fireEvent.click(screen.getByRole("button", { name: "Дахин оролдох" }));
 
     expect(await screen.findByRole("list", { name: "Шилдэг гурав" })).toBeTruthy();
   });
 
-  it("shows an empty state when nobody is ranked", async () => {
+  it("shows state-empty when nobody is ranked", async () => {
     serveMock(() => ({ ok: true, json: async () => [] }));
     renderPage();
 
-    expect(await screen.findByText("Чансаа бүрдээгүй байна.")).toBeTruthy();
+    expect((await screen.findByTestId("state-empty")).textContent).toContain("Чансаа бүрдээгүй байна.");
+  });
+
+  it("hides the ranking from a teacher without loading it", () => {
+    const fetch = serveMock();
+    renderPage(teacher);
+
+    expect(screen.getByTestId("state-forbidden").textContent).toContain("Чансаа зөвхөн оюутнуудад харагдана.");
+    expect(screen.getByRole("link", { name: "Багшийн өрөө рүү" }).getAttribute("href")).toBe("/teacher");
+    expect(screen.queryByRole("link", { name: "Чансаа" })).toBeNull();
+    expect(fetch).not.toHaveBeenCalled();
   });
 });
