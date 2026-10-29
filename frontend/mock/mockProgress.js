@@ -71,6 +71,17 @@ const mockProgress = {
     return progress.filter((p) => p.userId === userId);
   },
 
+  /** Сэдвийг DONE болгох (Knowledge Check амжилттай дууссаны дараа) */
+  async completeTopic(userId, topicId, knowledgeScore) {
+    const progress = await this._seedTopics();
+    const entry = { userId, topicId, status: 'DONE', knowledgeScore };
+    const idx = progress.findIndex((p) => p.userId === userId && p.topicId === topicId);
+    if (idx === -1) progress.push(entry);
+    else progress[idx] = entry;
+    localStorage.setItem(TOPIC_PROGRESS_KEY, JSON.stringify(progress));
+    return entry;
+  },
+
   reset() {
     localStorage.removeItem(UNIT_PROGRESS_KEY);
     localStorage.removeItem(TOPIC_PROGRESS_KEY);

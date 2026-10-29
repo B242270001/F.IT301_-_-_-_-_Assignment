@@ -8,6 +8,7 @@ import GlobalUIStates from "./GlobalUIStates";
 import QuizResult from "./QuizResult";
 import TeacherRoom from "./TeacherRoom";
 import TeacherCourseForm from "./TeacherCourseForm";
+import LectureDetail from "./LectureDetail";
 
 export default function App() {
   const [user, setUser] = useState(() => mockAuth.getCurrentUser());
@@ -67,6 +68,17 @@ export default function App() {
           }
         />
         <Route path="/ui-states" element={<GlobalUIStates />} />
+        {/* TASK-06: Б. Цогжавхлан — лекцийн дэлгэрэнгүй */}
+        <Route
+          path="/explore/lecture/:id"
+          element={
+            isLoggedIn ? (
+              <LectureDetail user={user} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
         {/* TASK-04: Д. Баттөмөр */}
         <Route
           path="/quiz/result"
