@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { mockAuth } from "./mock";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
@@ -9,6 +9,21 @@ import QuizResult from "./QuizResult";
 import TeacherRoom from "./TeacherRoom";
 import TeacherCourseForm from "./TeacherCourseForm";
 import LectureDetail from "./LectureDetail";
+
+// Role бүрийн нүүр хуудсыг санахгүй — нэвтэрсэн хэрэглэгчийн role өөрөө шийднэ
+const HOME_PAGES = ["/dashboard", "/teacher"];
+
+// Нэвтрээгүй бол /login руу илгээж, очих гэсэн хаягийг state-д хадгална
+function RequireLogin() {
+  const location = useLocation();
+  return <Navigate to="/login" replace state={{ from: `${location.pathname}${location.search}` }} />;
+}
+
+// Нэвтэрсний дараа хадгалсан хаяг руу, байхгүй бол role-ийн нүүр хуудас руу буцаана
+function AfterLogin({ home }) {
+  const from = useLocation().state?.from;
+  return <Navigate to={from && !HOME_PAGES.includes(from) ? from : home} replace />;
+}
 
 export default function App() {
   const [user, setUser] = useState(() => mockAuth.getCurrentUser());
@@ -41,7 +56,7 @@ export default function App() {
           path="/login"
           element={
             isLoggedIn ? (
-              <Navigate to={afterLoginRedirect} />
+              <AfterLogin home={afterLoginRedirect} />
             ) : (
               <Login onLogin={handleLogin} />
             )
@@ -53,7 +68,7 @@ export default function App() {
             isLoggedIn ? (
               <Dashboard user={user} onLogout={handleLogout} />
             ) : (
-              <Navigate to="/login" />
+              <RequireLogin />
             )
           }
         />
@@ -63,7 +78,7 @@ export default function App() {
             isLoggedIn ? (
               <Leaderboard user={user} />
             ) : (
-              <Navigate to="/login" />
+              <RequireLogin />
             )
           }
         />
@@ -75,7 +90,7 @@ export default function App() {
             isLoggedIn ? (
               <LectureDetail user={user} />
             ) : (
-              <Navigate to="/login" />
+              <RequireLogin />
             )
           }
         />
@@ -86,7 +101,7 @@ export default function App() {
             isLoggedIn ? (
               <QuizResult user={user} />
             ) : (
-              <Navigate to="/login" />
+              <RequireLogin />
             )
           }
         />
@@ -98,7 +113,7 @@ export default function App() {
             ) : isLoggedIn ? (
               <Navigate to="/dashboard" />
             ) : (
-              <Navigate to="/login" />
+              <RequireLogin />
             )
           }
         />
@@ -107,8 +122,10 @@ export default function App() {
           element={
             isLoggedIn && isTeacher ? (
               <TeacherCourseForm user={user} />
+            ) : isLoggedIn ? (
+              <Navigate to="/dashboard" />
             ) : (
-              <Navigate to="/login" />
+              <RequireLogin />
             )
           }
         />
