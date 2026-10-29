@@ -14,7 +14,7 @@
 | TASK-03 | Тэмүүлэн (Temka) | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Learning path, Quiz result, Mock store |
 | TASK-04 | Д. Баттөмөр | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Багшийн өрөө, Course CRUD, Upload |
 | TASK-05 | Хүслэн О. | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Explore, Topics, Lecture |
-| TASK-06 | Цогжавхлан Б. | REPLACE_WITH_STUDENT_CODE | REPLACE_WITH_GIT_EMAIL | Leaderboard, UI states, E2E, Docker |
+| TASK-06 | Цогжавхлан Б. | B222270838 | b222270838@must.edu.mn | Leaderboard, Lecture detail, UI states, E2E, Docker |
 
 ## 2. Модулийн эзэмшил (12 хуудас, 22 endpoint)
 
@@ -24,8 +24,8 @@
 | TASK-02 | `/practice`, `/quiz/:unitId` | `GET /api/courses/practice`, `GET /api/quiz/:unitId`, `POST /api/quiz/check`, `POST /api/quiz/submit` | QuizQuestion, QuizAttempt |
 | TASK-03 | `/practice/:courseId`, `/quiz/result` | `GET /api/units/path/:courseId`, `GET /api/attempts/latest` | Unit, UserProgress |
 | TASK-04 | `/teacher`, `/teacher/courses/new` | `GET /api/teacher/overview`, `POST/PUT/DELETE /api/teacher/courses[/:id]`, `POST /api/teacher/lectures`, `POST /api/uploads/material` | Course (CRUD), Lecture (Create) |
-| TASK-05 | `/explore`, `/topics/:courseId`, `/explore/lecture/:id` | `GET /api/courses/explore`, `GET /api/courses/:courseId/topics`, `GET/PUT/DELETE /api/lectures/:id`, `POST /api/lectures/:id/knowledge-check` | Topic, TopicProgress, Lecture (Read/Update/Delete) |
-| TASK-06 | `/leaderboard` | `GET /api/leaderboard`, `GET /api/health` | Leaderboard view |
+| TASK-05 | `/explore`, `/topics/:courseId` | `GET /api/courses/explore`, `GET /api/courses/:courseId/topics`, `GET/PUT/DELETE /api/lectures/:id`, `POST /api/lectures/:id/knowledge-check` | Topic, TopicProgress, Lecture (Read/Update/Delete) |
+| TASK-06 | `/leaderboard`, `/explore/lecture/:id` | `GET /api/leaderboard`, `GET /api/health` | Leaderboard view |
 
 Нэг route-ийн ижил үйлдэл, ижил API method+path, ижил тест хоёр гишүүнд давхар оноогдоогүй. Lecture entity-ийн Create (TASK-04) болон Read/Update/Delete (TASK-05) нь ялгаатай taskId, ялгаатай шалгуурт хуваагдсан.
 
@@ -38,7 +38,7 @@
 | `frontend/src/components/TopHUD.jsx` | TASK-01 | HUD-ыг бусад хуудас дахин ашиглана |
 | `frontend/src/mock/db.js`, `MockStoreContext.jsx` | TASK-03 | Seed + CRUD action. Өөрчлөх бол issue дээр тохирно |
 | `frontend/src/utils/validators.js` | TASK-04 | Нэр, тайлбар, файл төрөл/хэмжээний validation |
-| `frontend/src/components/states/*`, `Toast`, `ConfirmDialog` | TASK-06 | Нийтлэг төлөвүүд |
+| `frontend/PageState.jsx`, `Toast.jsx`, `ConfirmDialog.jsx`, `Navbar.jsx` | TASK-06 | Нийтлэг төлөвүүд (`state-loading/empty/error/not-found/forbidden`), мэдэгдэл, устгах dialog, топ цэс |
 | `frontend/src/styles/*` (token, responsive layout) | TASK-06 | [design.md](docs/design.md)-ийн token |
 | `e2e/*`, `playwright.config.js` | TASK-06 (`crud.spec.js` → TASK-04, `role.spec.js` → TASK-01) | Scenario бүр нэг эзэнтэй |
 | `docker-compose.yml`, `backend/Dockerfile` (Lab 6) | TASK-06 | |
@@ -111,20 +111,24 @@
 - **Хэсэг:** Чансаа, лекцийн дэлгэрэнгүй (Render demo, Knowledge Check, багшийн засах/устгах), нийтлэг UI төлөв component, responsive layout, validation/smoke/responsive Playwright scenario
 - **Routes:** `/leaderboard`, `/explore/lecture/:id`
 - **Файл:**
-  - `frontend/src/features/leaderboard/Leaderboard.jsx`
-  - `frontend/src/features/lecture/ExploreLectureDetail.jsx`
-  - `frontend/src/components/states/*`
-  - `frontend/src/components/Toast.jsx`
-  - `frontend/src/components/ConfirmDialog.jsx`
-  - `frontend/src/styles/*`
+  - `frontend/Leaderboard.jsx`
+  - `frontend/LectureDetail.jsx`
+  - `frontend/GlobalUIStates.jsx` (`/ui-states`)
+  - `frontend/PageState.jsx`
+  - `frontend/Toast.jsx`
+  - `frontend/ConfirmDialog.jsx`
+  - `frontend/Navbar.jsx`
   - `e2e/validation.spec.js`
   - `e2e/smoke.spec.js`
   - `e2e/responsive.spec.js`
+  - `e2e/routes.js`
   - `playwright.config.js`
 - **Тест:**
-  - `frontend/src/tests/Leaderboard.test.jsx`
-  - `frontend/src/tests/LectureDetail.test.jsx`
-  - `frontend/src/tests/UIStates.test.jsx`
+  - `frontend/tests/Leaderboard.test.jsx`
+  - `frontend/tests/LectureDetail.test.jsx`
+  - `frontend/tests/GlobalUIStates.test.jsx`
+  - `frontend/tests/PageState.test.jsx`
+  - `frontend/tests/Toast.test.jsx`
   - Дээрх E2E тестүүд (`validation`, `smoke`, `responsive` tag)
 - **Хамаарал:** TASK-03 mock store, TASK-01 role guard, TASK-04 Lecture create (лекцийн өгөгдөл), бусад гишүүдийн testId-ууд (`team-spec.json`).
 - **Хүлээн авах шалгуур:**
@@ -135,3 +139,7 @@
   5. 12 route бүр 375px өргөнтэй дэлгэцэд хэвтээ overflow-гүй байна. `smoke` scenario алдаагүй ажиллана.
   6. Хуудас бүрийн `state-*` component нэг бүтэцтэй, loading, empty, error төлөвүүд ижил загвараар харагдана.
   7. Лекцийн дэлгэрэнгүй хуудасны өгөгдөл mock store-той холбогдож, байхгүй `id`-д алдааны төлөв харуулна.
+- **Branch / MR:** `feature/TASK-06-lecture-detail` (өмнөх: `task-06-leaderboard` → PR #1)
+- **Commit:** `78867d4` (leaderboard, ui-states), `4162197` (Vitest + тест), `701525c` (Navbar), `25b73f5` (лекцийн дэлгэрэнгүй), `d5b5b02` (login-ы дараах буцах зам), `7bc0c13` (PageState, Toast, багшид чансаа хаах), `eb734a6` (Playwright smoke/responsive/validation, `start:grader`)
+- **Нотолгоо:** `npm run test:ci` — 5 файл, 27 тест амжилттай. `npx playwright test` — 24 амжилттай, 15 fixme (App.jsx-д бүртгэгдээгүй 5 route), 1 алдаа: `/teacher` 375px-д 6px хэвтээ overflow (TASK-04 хүснэгт).
+- **Төлөв:** review

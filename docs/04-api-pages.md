@@ -15,8 +15,8 @@
 | 6 | `/quiz/result` | Үр дүн | `page-quiz-result` | Student | TASK-03 | `POST /api/quiz/submit`, `GET /api/attempts/latest` |
 | 7 | `/explore` | Хичээлийн сан | `page-explore` | Student, Teacher | TASK-05 | `GET /api/courses/explore` |
 | 8 | `/topics/:courseId` | Сэдвийн жагсаалт | `page-topics` | Student, Teacher | TASK-05 | `GET /api/courses/:courseId/topics` |
-| 9 | `/explore/lecture/:id` | Лекц | `page-lecture` | Student, Teacher | TASK-05 | `GET/PUT/DELETE /api/lectures/:id`, `POST /api/lectures/:id/knowledge-check` |
-| 10 | `/leaderboard` | Чансаа | `page-leaderboard` | Student, Teacher | TASK-06 | `GET /api/leaderboard` |
+| 9 | `/explore/lecture/:id` | Лекц | `page-lecture` | Student, Teacher | TASK-06 | `GET/PUT/DELETE /api/lectures/:id`, `POST /api/lectures/:id/knowledge-check` |
+| 10 | `/leaderboard` | Чансаа | `page-leaderboard` | Student | TASK-06 | `GET /api/leaderboard` |
 | 11 | `/teacher` | Удирдах өрөө | `page-teacher-room` | Teacher | TASK-04 | `GET /api/teacher/overview`, `PUT/DELETE /api/teacher/courses/:id` |
 | 12 | `/teacher/courses/new` | Хичээл нэмэх | `page-teacher-course-form` | Teacher | TASK-04 | `POST /api/teacher/courses`, `POST /api/teacher/lectures`, `POST /api/uploads/material` |
 

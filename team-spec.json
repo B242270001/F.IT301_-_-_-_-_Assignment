@@ -48,17 +48,28 @@
       "taskId": "TASK-05",
       "name": "Хүслэн О.",
       "role": "Frontend / Explore Library with Search",
-      "routes": ["/explore", "/explore/lecture/:id"],
+      "routes": ["/explore"],
       "apiEndpoints": ["GET /api/courses/explore", "GET /api/lectures/:id"],
       "tests": ["frontend/src/tests/ExploreSearch.test.jsx"]
     },
     {
       "taskId": "TASK-06",
       "name": "Цогжавхлан Б.",
-      "role": "Frontend & QA / Leaderboard, UI States & E2E Testing",
-      "routes": ["/leaderboard", "/ui-states"],
-      "apiEndpoints": ["GET /api/leaderboard"],
-      "tests": ["frontend/tests/Leaderboard.test.jsx", "frontend/tests/GlobalUIStates.test.jsx"]
+      "studentId": "B222270838",
+      "email": "b222270838@must.edu.mn",
+      "role": "Frontend & QA / Leaderboard, Lecture Detail, UI States & E2E Testing",
+      "routes": ["/leaderboard", "/explore/lecture/:id", "/ui-states"],
+      "apiEndpoints": ["GET /api/leaderboard", "GET /api/health"],
+      "tests": [
+        "frontend/tests/Leaderboard.test.jsx",
+        "frontend/tests/LectureDetail.test.jsx",
+        "frontend/tests/GlobalUIStates.test.jsx",
+        "frontend/tests/PageState.test.jsx",
+        "frontend/tests/Toast.test.jsx",
+        "e2e/smoke.spec.js",
+        "e2e/responsive.spec.js",
+        "e2e/validation.spec.js"
+      ]
     }
   ]
 }
