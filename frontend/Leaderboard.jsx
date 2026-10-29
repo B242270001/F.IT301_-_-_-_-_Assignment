@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import sparkles from "./assets/leaderboard/sparkles.svg";
-import house from "./assets/leaderboard/house.svg";
-import zap from "./assets/leaderboard/zap.svg";
-import flame from "./assets/leaderboard/flame.svg";
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 import graduationCap from "./assets/leaderboard/graduation-cap.svg";
 import crown from "./assets/leaderboard/crown.svg";
 import trendingUp from "./assets/leaderboard/trending-up.svg";
@@ -14,7 +11,7 @@ import saruul from "./assets/leaderboard/portrait-saruul.svg";
 import bilguun from "./assets/leaderboard/portrait-bilguun.svg";
 import "./Leaderboard.css";
 
-const currentUser = { id: "U05", name: "Тэмүүлэн", streak: 7 };
+const currentUser = { id: "U05" };
 const portraits = { U01: anujin, U02: saruul, U03: bilguun };
 const avatarColors = ["#f7eadf", "#eee9ff", "#e3f1ee", "#e7edfa"];
 const tabs = [
@@ -43,6 +40,10 @@ function changeText(change) {
 }
 
 function Avatar({ student }) {
+  // Өөрийн аватар нь Navbar-ынхтай адилхан (нил ягаан, цагаан үсэг)
+  if (student.id === currentUser.id) {
+    return <span className="lb-avatar lb-avatar-me">{student.name.split(" ").pop()[0]}</span>;
+  }
   return (
     <span className="lb-avatar" style={{ background: avatarColors[Number(student.id.slice(1)) % avatarColors.length] }}>
       {student.name.split(" ").pop()[0]}
@@ -50,7 +51,7 @@ function Avatar({ student }) {
   );
 }
 
-export default function Leaderboard() {
+export default function Leaderboard({ user }) {
   const [period, setPeriod] = useState("weekly");
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
@@ -83,36 +84,7 @@ export default function Leaderboard() {
 
   return (
     <div className="lb-page" data-testid="page-leaderboard">
-      <header className="lb-nav">
-        <div className="lb-brand">
-          <span className="lb-emblem">
-            <img src={sparkles} alt="" />
-          </span>
-          StudyQuest
-        </div>
-        <nav className="lb-destinations">
-          <Link to="/dashboard" className="lb-room">
-            <img src={house} alt="" />
-            Өрөө рүү
-          </Link>
-          <span className="lb-divider" />
-          <NavLink to="/practice" className="lb-dest">Дадлага</NavLink>
-          <NavLink to="/explore" className="lb-dest">Судлах</NavLink>
-          <NavLink to="/leaderboard" className="lb-dest">Чансаа</NavLink>
-        </nav>
-        <div className="lb-hud">
-          <span className="lb-stat">
-            <img src={zap} alt="" />
-            {totalMe ? formatXp(totalMe.xp) : "— XP"}
-          </span>
-          <span className="lb-stat">
-            <img src={flame} alt="" />
-            {currentUser.streak} өдөр
-          </span>
-          <span className="lb-hud-avatar">{currentUser.name[0]}</span>
-          <span className="lb-username">{currentUser.name}</span>
-        </div>
-      </header>
+      <Navbar user={user} />
 
       <main className="lb-content">
         <div className="lb-heading">

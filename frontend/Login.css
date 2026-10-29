@@ -6,9 +6,17 @@
   font-family: sans-serif;
 }
 
+/* index.css-ийн 1126px-ийн #root-ыг дэлгэц дүүрэн болгоно (баруун тийш шилжиж, хэтэрч байсныг засав) */
+#root:has(.login-container) {
+  width: auto;
+  max-width: none;
+  border: 0;
+  text-align: left;
+}
+
 .login-container {
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #f7f6fc;
   overflow: hidden; /* Илүү гарч гүйлгэхээс сэргийлнэ */
@@ -55,6 +63,7 @@
 }
 
 .hero-title {
+  color: #ffffff; /* index.css-ийн h1 өнгө (бараг хар) дарахаас сэргийлнэ */
   font-size: 40px;
   font-weight: bold;
 }
