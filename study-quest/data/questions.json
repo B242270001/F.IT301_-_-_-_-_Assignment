@@ -1,0 +1,136 @@
+[
+  {
+    "id": 1,
+    "unitId": 2,
+    "unitTitle": "НЭГЖ 2: Компонент суурь",
+    "courseTitle": "Веб систем ба технологи",
+    "type": "single_choice",
+    "typeLabel": "НЭГ ХАРИУЛТ СОНГОХ",
+    "question": "React компонент гэж юу вэ?",
+    "subtitle": "Хамгийн зөв тайлбарыг сонгоорой.",
+    "codeLanguage": null,
+    "codeSnippet": null,
+    "options": [
+      "Зөвхөн өнгө тохируулдаг CSS дүрэм",
+      "Дахин ашиглаж болох интерфэйсийн хэсэг",
+      "Өгөгдлийн сангийн хүснэгт",
+      "Веб серверийн хаяг"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Зөв ойлгожээ! Компонент нь интерфэйсийн бие даасан, дахин ашиглаж болох хэсэг юм. Жижиг хэсгүүдийг нэгтгэж том апп бүтээнэ.",
+    "points": 15,
+    "status": "published",
+    "createdAt": "2026-10-25T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "unitId": 2,
+    "unitTitle": "НЭГЖ 2: Компонент суурь",
+    "courseTitle": "Веб систем ба технологи",
+    "type": "true_false",
+    "typeLabel": "ҮНЭН ЭСВЭЛ ХУДАЛ",
+    "question": "React компонентын нэр жижиг үсгээр эхлэх ёстой.",
+    "subtitle": "Өгүүлбэрийг үнэн эсвэл худал гэж үнэлээрэй.",
+    "codeLanguage": null,
+    "codeSnippet": null,
+    "options": [
+      "ҮНЭН",
+      "ХУДАЛ"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Зөв хариуллаа! Компонентын нэр заавал том үсгээр эхэлнэ (жишээ нь <Content />). Энэ нь түүнийг энгийн HTML тагуудаас ялгадаг.",
+    "points": 15,
+    "status": "published",
+    "createdAt": "2026-10-26T11:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "unitId": 2,
+    "unitTitle": "НЭГЖ 2: Компонент суурь",
+    "courseTitle": "Веб систем ба технологи",
+    "type": "code",
+    "typeLabel": "КОДЫН ДҮРСЛЭЛ",
+    "question": "Энэ компонент дэлгэцэд ямар тоо харуулах вэ?",
+    "subtitle": "Кодыг мөр бүрээр нь харж зөв утгыг сонгоорой.",
+    "codeLanguage": "jsx",
+    "codeSnippet": "function Content() {\n  const items = [\"HTML\", \"CSS\", \"React\"];\n  return <p>{items.length}</p>;\n}",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Зөв хариулт: 3. items массив 3 элементтэй ба length шинж чанар нь 3 буцаадаг. JSX доторх {items.length} нь дэлгэцэд 3 гэж харагдана.",
+    "points": 20,
+    "status": "published",
+    "createdAt": "2026-10-27T09:30:00.000Z"
+  },
+  {
+    "id": 4,
+    "unitId": 1,
+    "unitTitle": "НЭГЖ 1: Вебийн үндэс",
+    "courseTitle": "Веб систем ба технологи",
+    "type": "single_choice",
+    "typeLabel": "НЭГ ХАРИУЛТ СОНГОХ",
+    "question": "HTML-д үндсэн бүтэц тодорхойлдог гол таг аль нь вэ?",
+    "subtitle": "Хамгийн зөв бүтцийн тагийг сонгоно уу.",
+    "codeLanguage": null,
+    "codeSnippet": null,
+    "options": [
+      "<html>",
+      "<div>",
+      "<script>",
+      "<style>"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "<html> таг нь аливаа HTML баримт бичгийн үндэс (root) элемент юм.",
+    "points": 10,
+    "status": "published",
+    "createdAt": "2026-10-22T08:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "unitId": 2,
+    "unitTitle": "НЭГЖ 2: Компонент суурь",
+    "courseTitle": "Веб систем ба технологи",
+    "type": "single_choice",
+    "typeLabel": "НЭГ ХАРИУЛТ СОНГОХ",
+    "question": "React компонентод props дамжуулахдаа аль дүрмийг баримтлах вэ?",
+    "subtitle": "Props-ийн өгөгдлийн урсгалыг сонгоно уу.",
+    "codeLanguage": null,
+    "codeSnippet": null,
+    "options": [
+      "Зөвхөн эцгээс хүүхэд рүү нэг чиглэлтэй",
+      "Зөвхөн хүүхдээс эцэг рүү",
+      "Хоёр тийш шууд өөрчлөгддөг",
+      "Props өөрчлөгдөх боломжгүй бөгөөд зөвхөн DOM-оос уншина"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "React-д өгөгдөл нь эцэг компонентоос хүүхэд компонент руу (unidirectional data flow) дамждаг.",
+    "points": 15,
+    "status": "draft",
+    "createdAt": "2026-10-28T14:20:00.000Z"
+  },
+  {
+    "id": 6,
+    "unitId": 3,
+    "unitTitle": "НЭГЖ 3: Бататгал төсөл",
+    "courseTitle": "Веб систем ба технологи",
+    "type": "true_false",
+    "typeLabel": "ҮНЭН ЭСВЭЛ ХУДАЛ",
+    "question": "State өөрчлөгдөх бүрт React тухайн компонентыг дахин дүрсэлдэг (re-render).",
+    "subtitle": "Өгүүлбэрийг үнэн эсвэл худал гэж үнэлээрэй.",
+    "codeLanguage": null,
+    "codeSnippet": null,
+    "options": [
+      "ҮНЭН",
+      "ХУДАЛ"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Тийм, state-ийн утга шинэчлэгдэх үед React тухайн компонентыг дахин дуудаж, дэлгэцийн DOM-ыг шинэчилдэг.",
+    "points": 15,
+    "status": "published",
+    "createdAt": "2026-10-28T16:00:00.000Z"
+  }
+]

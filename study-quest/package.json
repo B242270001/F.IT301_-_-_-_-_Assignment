@@ -1,0 +1,19 @@
+{
+  "name": "studyquest-task02",
+  "version": "1.0.0",
+  "description": "StudyQuest - TASK-02 (Мөнхбаяр) Дадлага хичээл сонгох, Сорилын асуулт, Багшийн асуулт засах",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "studyquest",
+    "practice-courses",
+    "quiz",
+    "admin-questions",
+    "task-02"
+  ],
+  "author": "Мөнхбаяр",
+  "license": "MIT"
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyQuest - Дадлага хичээл ба Асуултын сан (TASK-02)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="header-container">
+        <!-- Brand -->
+        <a href="/practice" class="brand-link" data-link>
+          <div class="brand-emblem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="url(#brandGrad)" />
+              <defs>
+                <linearGradient id="brandGrad" x1="2" y1="2" x2="22" y2="21.02" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8B5CF6"/>
+                  <stop offset="1" stop-color="#6366F1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">StudyQuest</span>
+        </a>
+
+        <!-- Main Nav Tabs -->
+        <nav class="main-nav">
+          <a href="/practice" class="nav-tab active" data-nav="practice" data-link>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+            <span>Дадлага</span>
+          </a>
+          <a href="/quiz/2" class="nav-tab" data-nav="quiz" data-link>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>Сорил (Quiz)</span>
+          </a>
+          <a href="/admin/questions" class="nav-tab" data-nav="admin" data-link>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            <span>Багшийн өрөө</span>
+          </a>
+        </nav>
+
+        <!-- Right Side HUD (Gamification Stats) -->
+        <div class="user-hud">
+          <!-- Experience XP -->
+          <div class="hud-item xp-badge" title="Цуглуулсан оноо (XP)">
+            <svg class="hud-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span id="hud-xp-value">2,480 XP</span>
+          </div>
+
+          <!-- Streak Badge -->
+          <div class="hud-item streak-badge" title="Өдрийн цуврал">
+            <svg class="hud-icon fire-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.165-7.333-3.856-7.333 3.856 1.399-8.165-5.934-5.784 8.2-1.192zm0 5.702l-2.023 4.099-4.523.658 3.273 3.19-.773 4.504 4.046-2.127 4.046 2.127-.773-4.504 3.273-3.19-4.523-.658z"/>
+            </svg>
+            <span id="hud-streak-value">7 өдөр</span>
+          </div>
+
+          <!-- User Profile / Avatar -->
+          <div class="hud-item profile-pill">
+            <div class="avatar-circle">Т</div>
+            <div class="profile-info">
+              <span class="user-name">Б. Тэмүүлэн</span>
+              <span class="user-role">TASK-02 • Мөнхбаяр</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Content Outlet -->
+    <main id="main-content" class="main-container">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Хичээлийн агуулгыг уншиж байна...</p>
+      </div>
+    </main>
+
+    <!-- Global Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
