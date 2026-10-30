@@ -13,7 +13,7 @@ export default function Login({ onLogin }) {
     e.preventDefault();
     setError("");
 
-    if (!studentCode || !password) {
+    if (!studentCode.trim || !password.trim) {
       setError("Оюутны код болон нууц үгээ оруулна уу!");
       return;
     }
@@ -44,10 +44,10 @@ export default function Login({ onLogin }) {
         </div>
 
         <div className="hero-text-container">
-          <span className="subtitle">ЧИНИЙ МЭДЛЭГИЙН АДАЛ ЯВДАЛ</span>
+          <span className="subtitle">Ez суралц</span>
           <h1 className="hero-title">Шинэ өдөр. Шинэ боломж.</h1>
           <p className="hero-desc">
-            Тавтай амраарай. Дараагийн аялал чинь эндээс эхэлнэ.
+            Унтаал байна уу тэ?
           </p>
         </div>
 
@@ -60,20 +60,19 @@ export default function Login({ onLogin }) {
         </div>
 
         <div className="footer-quote">
-          <span>Өнөөдрийн жижиг алхам — маргаашийн том ахиц.</span>
+          <span>Өнөөдөр хийсэн нэг тест шалгалтын 1 оноо шүү. Дуслыг хураавал далай гэж.</span>
         </div>
       </div>
 
       {/* Баруун талын хэсэг */}
       <div className="login-right-section">
         <div className="top-indicator">
-          <span>🎓 ОЮУТНЫ СУРАЛЦАХ ОРОН ЗАЙ</span>
+          <span>ТАНЫ СУРАЛЦАХ ОРОН ЗАЙ</span>
         </div>
 
         <div className="form-wrapper">
           <div className="welcome-header">
             <h2>Тавтай морил!</h2>
-            <p>Өрөөндөө орж, мэдлэгийн аяллаа үргэлжлүүлээрэй.</p>
           </div>
 
           {error && (
@@ -84,11 +83,11 @@ export default function Login({ onLogin }) {
 
           <form onSubmit={handleSubmit} className="login-form">
             <div className="input-group">
-              <label>Оюутны код (username)</label>
+              <label>Оюутны код</label>
               <div className="input-field-wrapper">
                 <input
                   type="text"
-                  placeholder="жишээ: temuulen, bagsh"
+                  placeholder="temuulen/bagsh"
                   value={studentCode}
                   onChange={(e) => setStudentCode(e.target.value)}
                 />
@@ -100,7 +99,7 @@ export default function Login({ onLogin }) {
               <div className="input-field-wrapper">
                 <input
                   type="password"
-                  placeholder="••••••••••"
+                  placeholder="student123/teacher123"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -116,16 +115,10 @@ export default function Login({ onLogin }) {
               <span>🚀</span>
             </button>
           </form>
-
-          <div className="form-footer-text">
-            <span style={{ fontSize: "12px", color: "#9ca3af" }}>
-              Demo: оюутан — <strong>temuulen / student123</strong> · багш — <strong>bagsh / teacher123</strong>
-            </span>
-          </div>
         </div>
 
         <div className="bottom-links">
-          <span>© 2026 StudyQuest</span>
+          <span>StudyQuest</span>
           <a href="#help">Тусламж</a>
         </div>
       </div>
